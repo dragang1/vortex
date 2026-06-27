@@ -1,0 +1,215 @@
+/* ============================================================
+   festival.css — Vortex Urban Music Festival
+   Animacije i festival overrides
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. HERO NASLOV — layout i tipografija
+   ------------------------------------------------------------ */
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 17vw, 12rem);
+  line-height: 0.88;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  margin: 0 0 0.15em;
+  padding: 0;
+  display: block;
+  transform: translateZ(0);
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.55),
+    0 0 80px rgba(8, 217, 196, 0.1);
+}
+
+.hero__title-line {
+  display: block;
+  overflow: hidden;
+}
+
+/* "2026" — zlatno → teal gradient */
+.hero__title-line--accent {
+  background: linear-gradient(
+    105deg,
+    var(--color-sand) 0%,
+    var(--color-accent-hot) 35%,
+    var(--color-accent) 75%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ------------------------------------------------------------
+   2. HERO LEAD
+   ------------------------------------------------------------ */
+.hero__lead {
+  margin-top: 0;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(191, 234, 240, 0.75);
+  font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+/* ------------------------------------------------------------
+   3. ANIMACIJE — background overlays
+   ------------------------------------------------------------ */
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
+}
+
+.hero__bg::after {
+  animation: floatSlow 10s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* ------------------------------------------------------------
+   4. GRID LINIJE
+   ------------------------------------------------------------ */
+@keyframes subtleShift {
+  0%,
+  100% {
+    background-position: 0 0;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 48px 48px;
+    filter: hue-rotate(18deg);
+  }
+}
+
+.hero__grid-lines {
+  animation: subtleShift 12s linear infinite;
+  opacity: 0.95;
+}
+
+/* ------------------------------------------------------------
+   5. SHORELINE — wave pulse
+   ------------------------------------------------------------ */
+@keyframes shorePulse {
+  0%,
+  100% {
+    transform: scaleX(0.98);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scaleX(1.06);
+    opacity: 1;
+  }
+}
+
+.hero__shoreline span {
+  animation: shorePulse 3s ease-in-out infinite;
+}
+.hero__shoreline span:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.hero__shoreline span:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+/* ------------------------------------------------------------
+   6. PRIMARY BUTTON — soft pulse
+   ------------------------------------------------------------ */
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 14px 42px rgba(255, 111, 97, 0.28);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 20px 60px rgba(255, 111, 97, 0.38);
+    transform: translateY(-3px);
+  }
+}
+
+.btn--primary {
+  animation: pulse 3.8s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------
+   7. ANIMATED GRADIENT (reserve — currently off)
+   ------------------------------------------------------------ */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ------------------------------------------------------------
+   8. REVEAL — GSAP inner spans
+   ------------------------------------------------------------ */
+.hero__title .reveal-load__inner {
+  display: inline-block;
+}
+
+/* ------------------------------------------------------------
+   9. THREE.JS CANVAS
+   ------------------------------------------------------------ */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* ------------------------------------------------------------
+   10. SEKCIJE — letter spacing override
+   ------------------------------------------------------------ */
+.section__title,
+.hero__meta-item strong {
+  letter-spacing: 0.04em;
+}
+
+/* ------------------------------------------------------------
+   11. REDUCED MOTION
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .hero__bg::before,
+  .hero__bg::after,
+  .hero__grid-lines,
+  .hero__shoreline span,
+  .btn--primary,
+  .hero__title .reveal-load__inner {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   12. MOBILNI — do 640px
+   ------------------------------------------------------------ */
+@media (max-width: 640px) {
+  /* canvas prozirnost */
+  .hero-canvas {
+    opacity: 0.6;
+  }
+
+  /* naslov — gradient umjesto plain white */
+  .hero__title {
+    font-size: clamp(4rem, 22vw, 6.5rem);
+    text-shadow: 0 6px 22px rgba(0, 0, 0, 0.32);
+  }
+
+  /* lead tekst */
+  .hero__lead {
+    color: rgba(191, 234, 240, 0.85);
+  }
+}

@@ -1,0 +1,390 @@
+/* ============================================================
+   hero.css — Vortex Urban Music Festival
+   Hero sekcija — layout, pozadina, tipografija, responzivnost
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. HERO WRAPPER
+   ------------------------------------------------------------ */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-top: var(--header-height); /* 5.5rem */
+  overflow: hidden;
+  z-index: 0;
+  background: var(--color-bg);
+}
+
+/* ------------------------------------------------------------
+   2. POZADINSKA SLIKA
+   ------------------------------------------------------------ */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("/logo instagram-05.jpg");
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.04);
+  will-change: transform;
+}
+
+/* Overlay: lijevo (za čitljivost teksta) + dole (fade u bg) */
+.hero__bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(6, 26, 43, 0.88) 0%,
+      rgba(6, 26, 43, 0.55) 42%,
+      rgba(6, 26, 43, 0.12) 72%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(6, 26, 43, 0.2) 0%,
+      rgba(6, 26, 43, 0.1) 40%,
+      rgba(6, 26, 43, 0.92) 88%,
+      var(--color-bg) 100%
+    );
+  pointer-events: none;
+}
+
+/* Donji sjaj + ripple efekt */
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -7rem;
+  height: 17rem;
+  background:
+    radial-gradient(
+      70% 90% at 50% 100%,
+      rgba(8, 217, 196, 0.18),
+      transparent 70%
+    ),
+    repeating-radial-gradient(
+      ellipse at 50% 100%,
+      rgba(255, 255, 255, 0.08) 0 2px,
+      transparent 2px 18px
+    );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------
+   3. GRID LINIJE
+   ------------------------------------------------------------ */
+.hero__grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(115, 230, 222, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(115, 230, 222, 0.03) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, transparent 80%);
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------
+   4. INNER WRAPPER — gura sadržaj na dno
+   ------------------------------------------------------------ */
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* ------------------------------------------------------------
+   5. CONTENT — centriran kontejner
+   ------------------------------------------------------------ */
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max); /* 1200px */
+  width: min(100% - 2rem, var(--container-max));
+  margin-inline: auto;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+/* ------------------------------------------------------------
+   6. BADGE
+   ------------------------------------------------------------ */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: var(--space-sm);
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(115, 230, 222, 0.28);
+  border-radius: 2rem;
+  background: rgba(6, 26, 43, 0.52);
+  color: var(--color-sand);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.hero__badge-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-accent-hot);
+  box-shadow: 0 0 8px var(--color-accent-hot);
+  animation: pulseDot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.82);
+  }
+}
+
+/* ------------------------------------------------------------
+   7. NASLOV — definisan u festival.css,
+      ovdje samo margin/spacing
+   ------------------------------------------------------------ */
+.hero__title {
+  margin-bottom: var(--space-sm);
+}
+
+/* ------------------------------------------------------------
+   8. LEAD (podnaslov)
+   ------------------------------------------------------------ */
+.hero__lead {
+  max-width: 30rem;
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------------------
+   9. META INFO
+   ------------------------------------------------------------ */
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem var(--space-md);
+  margin-bottom: var(--space-md);
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+.hero__meta-item {
+  padding-left: 0.85rem;
+  border-left: 2px solid rgba(255, 178, 63, 0.55);
+}
+
+.hero__meta-item strong {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------
+   10. CTA DUGMAD
+   ------------------------------------------------------------ */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: var(--space-lg);
+}
+
+/* ------------------------------------------------------------
+   11. STATS
+   ------------------------------------------------------------ */
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(115, 230, 222, 0.15);
+}
+
+.hero__stat {
+  padding: 0.85rem var(--space-sm);
+  border-radius: var(--radius-sm);
+  background: rgba(6, 26, 43, 0.42);
+  border: 1px solid rgba(115, 230, 222, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.hero__stat:hover {
+  background: rgba(8, 217, 196, 0.08);
+  border-color: rgba(8, 217, 196, 0.28);
+}
+
+.hero__stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.hero__stat-label {
+  margin-top: 0.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+}
+
+/* ------------------------------------------------------------
+   12. SHORELINE — dekorativne linije desno
+   ------------------------------------------------------------ */
+.hero__shoreline {
+  position: absolute;
+  right: max(1.5rem, calc((100vw - var(--container-max)) / 2 + 1rem));
+  bottom: var(--space-xl);
+  z-index: 1;
+  display: grid;
+  gap: 0.55rem;
+  width: min(26vw, 16rem);
+  pointer-events: none;
+}
+
+.hero__shoreline span {
+  display: block;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 226, 168, 0.8),
+    transparent
+  );
+}
+
+.hero__shoreline span:nth-child(2) {
+  margin-left: 16%;
+  opacity: 0.65;
+}
+.hero__shoreline span:nth-child(3) {
+  margin-left: 32%;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   RESPONZIVNOST
+   ============================================================ */
+
+/* --- Tablet (641px – 1023px) --- */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .hero__content {
+    padding-bottom: var(--space-lg);
+  }
+
+  .hero__stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* --- Mobilni (do 640px) --- */
+@media (max-width: 640px) {
+  /* Mobilna slika + pozicija */
+  .hero__bg {
+    background-image: url("/logo instagram-05.jpg");
+    background-position: center 28%;
+  }
+
+  /* Na mobilnom — jači donji fade jer je tekst ispod slike */
+  .hero__bg::before {
+    background: linear-gradient(
+      180deg,
+      rgba(6, 26, 43, 0.25) 0%,
+      rgba(6, 26, 43, 0.45) 42%,
+      rgba(6, 26, 43, 0.97) 82%,
+      var(--color-bg) 100%
+    );
+  }
+
+  /* Content — manje paddinga */
+  .hero__content {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-md);
+  }
+
+  /* Meta — jedna ispod druge */
+  .hero__meta {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  /* Stats — horizontalni redovi umjesto kolona */
+  .hero__stats {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .hero__stat {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .hero__stat-value {
+    font-size: 1.6rem;
+    min-width: 3.8rem;
+  }
+
+  .hero__stat-label {
+    margin-top: 0;
+  }
+
+  /* CTA — puna širina */
+  .hero__actions {
+    flex-direction: column;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Shoreline — sakrij na mobu */
+  .hero__shoreline {
+    display: none;
+  }
+}
+
+/* --- Jako mali ekrani (do 380px) --- */
+@media (max-width: 380px) {
+  .hero__badge {
+    font-size: 0.65rem;
+    padding: 0.35rem 0.8rem;
+  }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero__badge-dot {
+    animation: none;
+  }
+  .hero__bg {
+    transform: none;
+  }
+}

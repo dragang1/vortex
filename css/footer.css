@@ -1,0 +1,91 @@
+.site-footer {
+  padding-block: var(--space-xl) var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  background:
+    radial-gradient(circle at 16% 0%, rgba(255, 178, 63, 0.14), transparent 22rem),
+    linear-gradient(180deg, var(--color-bg-elevated), #061a2b);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.site-footer__brand p {
+  margin-top: var(--space-sm);
+  max-width: 28ch;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.site-footer__links h3 {
+  margin-bottom: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.site-footer__links a {
+  color: var(--color-text);
+  font-size: 0.92rem;
+  transition: color var(--transition);
+}
+
+.site-footer__links a:hover {
+  color: var(--color-accent-hot);
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.site-footer__legal {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.site-footer__legal a:hover {
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Footer logo sizing */
+.site-footer .nav__logo-image {
+  display: block;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: calc(var(--header-height) * 1.1); /* slightly larger allowed in footer */
+  object-fit: contain;
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+  .site-footer .nav__logo-image { max-height: calc(var(--header-height) * 1.05); }
+}
+
+@media (max-width: 768px) {
+  .site-footer .nav__logo-image { max-height: calc(var(--header-height) * 0.9); }
+}

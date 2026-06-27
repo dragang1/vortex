@@ -1,0 +1,127 @@
+.reveal-load {
+  opacity: 0;
+}
+
+.reveal-load--clip {
+  overflow: hidden;
+}
+
+.reveal-load--clip .reveal-load__inner {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-load--clip.is-visible .reveal-load__inner {
+  transform: translateY(0);
+}
+
+.reveal-load--fade-up {
+  transform: translateY(16px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-load--fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-load--scale {
+  transform: scale(0.96);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-load--scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Scroll reveals — transform + opacity only (no blur) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--left {
+  transform: translateX(-24px);
+}
+
+.reveal--left.is-visible {
+  transform: translateX(0);
+}
+
+.reveal--right {
+  transform: translateX(24px);
+}
+
+.reveal--right.is-visible {
+  transform: translateX(0);
+}
+
+.reveal-stagger.is-visible .reveal-stagger__item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger__item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-stagger__item:nth-child(1) {
+  transition-delay: 0ms;
+}
+.reveal-stagger__item:nth-child(2) {
+  transition-delay: 40ms;
+}
+.reveal-stagger__item:nth-child(3) {
+  transition-delay: 80ms;
+}
+.reveal-stagger__item:nth-child(4) {
+  transition-delay: 120ms;
+}
+.reveal-stagger__item:nth-child(5) {
+  transition-delay: 160ms;
+}
+.reveal-stagger__item:nth-child(6) {
+  transition-delay: 200ms;
+}
+
+body.is-loading .site-header {
+  opacity: 0;
+}
+
+body.is-ready .site-header {
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-load,
+  .reveal-load--clip .reveal-load__inner,
+  .reveal,
+  .reveal-stagger__item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  body.is-loading .site-header {
+    opacity: 1;
+  }
+}

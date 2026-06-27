@@ -1,0 +1,227 @@
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--header-height);
+  border-bottom: 1px solid transparent;
+  transition:
+    background var(--transition),
+    border-color var(--transition);
+  background: linear-gradient(
+    180deg,
+    rgba(6, 26, 43, 0.8),
+    rgba(6, 26, 43, 0.5)
+  );
+  backdrop-filter: blur(12px);
+}
+
+.site-header.is-scrolled {
+  border-color: rgba(255, 178, 63, 0.25);
+  background: rgba(6, 26, 43, 0.95);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Use max-height tied to header variable so logo never overflows */
+.nav__logo-image {
+  display: block;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: calc(var(--header-height) - 0.6rem);
+  object-fit: contain;
+}
+
+/* Accessible hide for screen-reader only text */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Provide larger max-heights on bigger viewports but still constrained to header */
+@media (min-width: 1200px) {
+  .nav__logo-image {
+    max-height: calc(var(--header-height) - 0.4rem);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+  .nav__logo-image {
+    max-height: calc(var(--header-height) - 0.6rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav__logo-image {
+    max-height: calc(var(--header-height) - 0.8rem);
+  }
+}
+
+.nav__logo-mark {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.45rem;
+  background: linear-gradient(
+    135deg,
+    var(--color-coral),
+    var(--color-accent-hot) 55%,
+    var(--color-accent)
+  );
+  color: #061a2b;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+}
+
+.nav__logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav__menu a {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.nav__menu a:hover,
+.nav__menu a.is-active {
+  color: var(--color-text);
+}
+
+.nav__cta {
+  padding: 0.65rem 1.1rem !important;
+  border: 1px solid rgba(255, 178, 63, 0.58);
+  border-radius: 0.38rem;
+  background: rgba(255, 178, 63, 0.14);
+  color: var(--color-text) !important;
+}
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.38rem;
+  background: rgba(6, 26, 43, 0.46);
+  cursor: pointer;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 1.15rem;
+  height: 2px;
+  margin-inline: auto;
+  border-radius: 999px;
+  background: var(--color-text);
+  transition:
+    transform var(--transition),
+    opacity var(--transition);
+}
+
+.nav__toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav__toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .nav__toggle {
+    display: none !important;
+  }
+
+  .nav__menu {
+    position: static;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 0;
+    background: transparent;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Enhanced nav links styling */
+.nav__link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #8fb8ff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all var(--transition);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav__link:hover {
+  color: #33c7ff;
+}
+
+/* Lineup link with underline accent */
+.nav__link--lineup::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent-hot), transparent);
+  transition: width var(--transition);
+}
+
+.nav__link--lineup:hover::after {
+  width: 100%;
+}
+
+/* Instagram social link */
+.nav__link--social {
+  transition: all var(--transition);
+}
+
+.nav__link--social:hover {
+  color: #33c7ff;
+}
