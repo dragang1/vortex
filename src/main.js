@@ -6,6 +6,7 @@ import "../css/festival.css";
 import "../css/sections.css";
 import "../css/footer.css";
 import "../css/sponsors.css";
+import "../css/lineup.css";
 
 import { initLoad } from "./js/load.js";
 import { initNav } from "./js/nav.js";
@@ -13,11 +14,6 @@ import { initReveal } from "./js/reveal.js";
 
 initNav();
 initReveal();
-
-// ─── GSAP hero animacije — pokrenuti PRIJE initLoad ──────────
-// initLoad() dodaje is-visible klase odmah na DOMContentLoaded,
-// pa GSAP mora postaviti početno stanje (opacity 0, y offset)
-// PRIJE toga — ovdje, na vrhu, sinkrono.
 
 const prefersReduced = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
@@ -27,7 +23,9 @@ const hasGsap = !prefersReduced && window.gsap && window.ScrollTrigger;
 if (hasGsap) {
   gsap.registerPlugin(ScrollTrigger);
 
-  // ── Postavi početno stanje odmah (sinkrono, prije initLoad)
+  // ── Početno stanje — SAMO hero elementi
+  // NE diraj .artist-card, .artist-feature, .destination-card itd.
+  // initReveal() ih animira kroz IntersectionObserver
   gsap.set(".hero__title-line", { y: 60, autoAlpha: 0 });
   gsap.set(".hero__badge", { y: 14, autoAlpha: 0 });
   gsap.set(".hero__lead", { y: 14, autoAlpha: 0 });
@@ -35,10 +33,9 @@ if (hasGsap) {
   gsap.set(".hero__actions .btn", { y: 12, autoAlpha: 0 });
   gsap.set(".hero__stat", { y: 12, autoAlpha: 0 });
 
-  // ── Timeline — sve ulazi u redoslijedu
+  // ── Hero timeline
   const tl = gsap.timeline({ delay: 0.1 });
 
-  // Naslov — VORTEX pa 2026
   tl.to(".hero__title-line", {
     y: 0,
     autoAlpha: 1,
@@ -46,42 +43,21 @@ if (hasGsap) {
     ease: "expo.out",
     stagger: 0.12,
   });
-
-  // Badge + lead + meta zajedno, malo iza naslova
   tl.to(
     ".hero__badge",
-    {
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.6,
-      ease: "power3.out",
-    },
-    "-=0.5",
+    { y: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" },
+    "-=0.50",
   );
-
   tl.to(
     ".hero__lead",
-    {
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.55,
-      ease: "power3.out",
-    },
+    { y: 0, autoAlpha: 1, duration: 0.55, ease: "power3.out" },
     "-=0.45",
   );
-
   tl.to(
     ".hero__meta",
-    {
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.55,
-      ease: "power3.out",
-    },
+    { y: 0, autoAlpha: 1, duration: 0.55, ease: "power3.out" },
     "-=0.38",
   );
-
-  // CTA dugmad
   tl.to(
     ".hero__actions .btn",
     {
@@ -93,8 +69,6 @@ if (hasGsap) {
     },
     "-=0.3",
   );
-
-  // Stats jedan po jedan
   tl.to(
     ".hero__stat",
     {
@@ -107,7 +81,7 @@ if (hasGsap) {
     "-=0.2",
   );
 
-  // ── Badge beskonačni float (poslije ulaska)
+  // Badge float
   tl.to(
     ".hero__badge",
     {
@@ -120,7 +94,7 @@ if (hasGsap) {
     "+=0.2",
   );
 
-  // ── Shoreline wave
+  // Shoreline wave
   gsap.to(".hero__shoreline span", {
     y: -5,
     repeat: -1,
@@ -130,36 +104,45 @@ if (hasGsap) {
     stagger: 0.2,
   });
 
-  // ── Scroll reveal za artist kartice
-  gsap.utils.toArray(".artist-card").forEach((card) => {
+  // ── Artist feature — scroll animacija
+  // Ovi elementi NISU pod reveal-load/reveal sustavom
+  // pa GSAP mora sam animirati
+  gsap.utils.toArray(".artist-feature").forEach((el, i) => {
     gsap.fromTo(
-      card,
-      { y: 22, autoAlpha: 0 },
+      el,
+      { y: 40, autoAlpha: 0 },
       {
         y: 0,
         autoAlpha: 1,
-        duration: 0.65,
+        duration: 0.85,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: card,
-          start: "top 88%",
+          trigger: el,
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       },
     );
   });
 
-  // ── Hover na news kartama
-  gsap.utils.toArray(".news-card").forEach((card) => {
-    card.addEventListener("mouseenter", () =>
-      gsap.to(card, { y: -6, duration: 0.22, ease: "power1.out" }),
-    );
-    card.addEventListener("mouseleave", () =>
-      gsap.to(card, { y: 0, duration: 0.3, ease: "power1.out" }),
-    );
-  });
+  // Coming soon blok
+  gsap.fromTo(
+    ".lineup-coming-soon",
+    { y: 30, autoAlpha: 0 },
+    {
+      y: 0,
+      autoAlpha: 1,
+      duration: 0.7,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".lineup-coming-soon",
+        start: "top 88%",
+        toggleActions: "play none none none",
+      },
+    },
+  );
 
-  // ── Hover micro-interaction na sekundarnim dugmadima
+  // ── Hover na sekundarnim dugmadima
   document.querySelectorAll(".btn--secondary").forEach((btn) => {
     btn.addEventListener("mouseenter", () =>
       gsap.to(btn, { scale: 1.03, duration: 0.16, ease: "power1.out" }),
@@ -170,27 +153,22 @@ if (hasGsap) {
   });
 }
 
-// ─── initLoad NAKON što je GSAP postavio početno stanje ──────
-// initLoad dodaje is-visible na .reveal-load elemente,
-// ali hero elementi su sada pod GSAP kontrolom (inline style)
-// pa is-visible klasa ne može overridati GSAP-ov autoAlpha.
+// ── initLoad POSLIJE gsap.set() ───────────────────────────────
 initLoad();
 
-// ─── Smooth scroll ───────────────────────────────────────────
+// ── Smooth scroll ─────────────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", (event) => {
-    const targetId = anchor.getAttribute("href");
-    if (!targetId || targetId === "#") return;
-    const target = document.querySelector(targetId);
+  anchor.addEventListener("click", (e) => {
+    const id = anchor.getAttribute("href");
+    if (!id || id === "#") return;
+    const target = document.querySelector(id);
     if (!target) return;
-    event.preventDefault();
+    e.preventDefault();
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
 
-// ─── Forma submit (preview mode) ─────────────────────────────
-document
-  .querySelectorAll(".register-form, .newsletter-form")
-  .forEach((form) => {
-    form.addEventListener("submit", (e) => e.preventDefault());
-  });
+// ── Forma submit (preview) ────────────────────────────────────
+document.querySelectorAll(".register-form, .newsletter-form").forEach((f) => {
+  f.addEventListener("submit", (e) => e.preventDefault());
+});

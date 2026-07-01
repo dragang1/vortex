@@ -1,0 +1,404 @@
+/* ============================================================
+   lineup.css — Vortex 2026
+   Dodaj ovo u /css/ folder i importuj u main.js:
+   import "../css/lineup.css";
+   ============================================================ */
+
+/* ── LINEUP HEADER ──────────────────────────────────────── */
+.lineup-preview {
+  background: var(--color-bg-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.lineup-preview::before {
+  content: "";
+  position: absolute;
+  top: -6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 18rem;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 208, 0, 0.2) 0%,
+    rgba(255, 140, 26, 0.08) 50%,
+    transparent 75%
+  );
+  pointer-events: none;
+}
+
+.lineup-preview__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+/* ── LINEUP DAY HEADER ──────────────────────────────────── */
+.lineup-day {
+  margin-bottom: var(--space-xl);
+}
+
+.lineup-day__title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid rgba(15, 25, 35, 0.08);
+}
+
+.lineup-day__date {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  letter-spacing: 0.03em;
+  color: var(--color-accent-hot);
+  line-height: 1;
+}
+
+.lineup-day__stage {
+  color: var(--color-text-muted-dark);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* ── COMING SOON (13. avgust) ───────────────────────────── */
+.lineup-coming-soon {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  border: 2px dashed rgba(255, 140, 26, 0.35);
+  border-radius: var(--radius-md);
+  background: rgba(255, 140, 26, 0.04);
+  transition:
+    border-color var(--transition),
+    background var(--transition);
+}
+
+.lineup-coming-soon:hover {
+  border-color: rgba(255, 140, 26, 0.6);
+  background: rgba(255, 140, 26, 0.07);
+}
+
+.coming-soon__icon {
+  flex-shrink: 0;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 140, 26, 0.1);
+  animation: iconPulse 3s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 140, 26, 0);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 16px rgba(255, 140, 26, 0);
+  }
+}
+
+.coming-soon__text {
+  flex: 1;
+}
+
+.coming-soon__label {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  color: var(--color-accent-hot);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.coming-soon__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  color: var(--color-ink);
+  margin-bottom: 0.65rem;
+}
+
+.coming-soon__desc {
+  color: var(--color-text-muted-dark);
+  font-size: 0.95rem;
+  max-width: 44ch;
+  line-height: 1.6;
+}
+
+.coming-soon__btn {
+  flex-shrink: 0;
+}
+
+/* ── ARTIST SHOWCASE (14. avgust) ───────────────────────── */
+.artist-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── ARTIST FEATURE kartica ─────────────────────────────── */
+.artist-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+  padding: var(--space-xl) 0;
+}
+
+/* Reverse — foto desno, tekst lijevo */
+.artist-feature--reverse {
+  direction: rtl;
+}
+
+.artist-feature--reverse > * {
+  direction: ltr;
+}
+
+/* ── Foto kontejner ─────────────────────────────────────── */
+.artist-feature__photo {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, #0d1f35 0%, #1a3a56 50%, #0d2840 100%);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.22);
+}
+
+.artist-feature__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.artist-feature__photo:hover .artist-feature__img {
+  transform: scale(1.04);
+}
+
+/* Placeholder — vidljiv dok nema slike */
+.artist-feature__placeholder {
+  display: flex; /* postaje none kad slika učita */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: absolute;
+  inset: 0;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
+/* Overlay na foto — donji gradient */
+.artist-feature__photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(7, 9, 15, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* Confirmed badge na slici */
+.artist-feature__confirmed {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 140, 26, 0.92);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+/* ── Artist info tekst ──────────────────────────────────── */
+.artist-feature__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: var(--space-sm);
+}
+
+.artist-feature__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.artist-feature__date {
+  color: var(--color-text-muted-dark);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.artist-feature__name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.artist-feature__tagline {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-accent-hot);
+  line-height: 1.5;
+  max-width: 38ch;
+  border-left: 3px solid var(--color-accent-hot);
+  padding-left: var(--space-sm);
+}
+
+.artist-feature__bio {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.artist-feature__bio p {
+  color: var(--color-text-muted-dark);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.artist-feature__bio em {
+  color: var(--color-ink);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ── Albumi/Projekti ────────────────────────────────────── */
+.artist-feature__albums {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(15, 25, 35, 0.08);
+}
+
+.artist-feature__albums-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted-dark);
+}
+
+.artist-feature__album-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.artist-feature__album {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 140, 26, 0.08);
+  border: 1px solid rgba(255, 140, 26, 0.22);
+  color: var(--color-ink);
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition:
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.artist-feature__album:hover {
+  background: rgba(255, 140, 26, 0.16);
+  border-color: rgba(255, 140, 26, 0.5);
+}
+
+/* ── Separator između izvođača ──────────────────────────── */
+.artist-separator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+}
+
+.artist-separator__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 140, 26, 0.3),
+    rgba(255, 208, 0, 0.3),
+    rgba(255, 140, 26, 0.3),
+    transparent
+  );
+}
+
+/* ── RESPONZIVNOST ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .artist-feature {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .artist-feature--reverse {
+    direction: ltr;
+  }
+
+  .artist-feature__photo {
+    aspect-ratio: 16 / 9;
+    max-height: 380px;
+  }
+
+  .lineup-coming-soon {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .coming-soon__desc {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .artist-feature__name {
+    font-size: clamp(2.4rem, 12vw, 3.5rem);
+  }
+
+  .artist-feature__photo {
+    aspect-ratio: 1 / 1;
+  }
+
+  .lineup-coming-soon {
+    padding: var(--space-md);
+  }
+
+  .coming-soon__title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .artist-separator {
+    display: none;
+  }
+}
