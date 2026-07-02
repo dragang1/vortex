@@ -12,7 +12,7 @@
 .hero__bg {
   position: absolute;
   inset: 0;
-  background-image: url("/logo instagram-05.jpg");
+  background-image: url("/hero-optimised.webp");
   background-size: cover;
   background-position: center 25%;
   background-repeat: no-repeat;
