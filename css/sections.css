@@ -135,10 +135,11 @@
 .artist-card__tag {
   display: inline-block;
   margin-bottom: var(--space-sm);
-  color: var(--color-accent-hot);
-  font-size: 0.7rem;
+  color: var(--color-neon);
+  font-family: var(--font-urban);
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
@@ -177,12 +178,20 @@
   overflow: hidden;
   min-height: 320px;
   padding: var(--space-lg);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
   justify-content: end;
   isolation: isolate;
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.destination-card:hover {
+  border-color: rgba(0, 245, 212, 0.35);
+  transform: translateY(-3px);
 }
 
 .destination-card--main {
@@ -214,10 +223,11 @@
 }
 
 .destination-card__label {
-  color: var(--color-sand);
-  font-size: 0.75rem;
+  color: var(--color-neon);
+  font-family: var(--font-urban);
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
@@ -239,8 +249,12 @@
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   gap: var(--space-xl);
   align-items: center;
-  padding-block: var(--space-lg);
-  border-block: 1px solid var(--color-border);
+  padding: clamp(1.5rem, 4vw, var(--space-lg));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(0, 245, 212, 0.04), transparent 50%),
+    rgba(8, 47, 69, 0.4);
 }
 
 .free-entry__copy {
@@ -414,5 +428,19 @@
 @media (max-width: 640px) {
   .destinations__grid {
     grid-template-columns: 1fr;
+  }
+
+  .destination-card {
+    min-height: 260px;
+    padding: var(--space-md);
+  }
+
+  .free-entry__inner {
+    gap: var(--space-md);
+    padding-block: var(--space-md);
+  }
+
+  .free-entry__copy .btn {
+    width: 100%;
   }
 }

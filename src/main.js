@@ -94,15 +94,7 @@ if (hasGsap) {
     "+=0.2",
   );
 
-  // Shoreline wave
-  gsap.to(".hero__shoreline span", {
-    y: -5,
-    repeat: -1,
-    yoyo: true,
-    ease: "sine.inOut",
-    duration: 2.6,
-    stagger: 0.2,
-  });
+  // Shoreline removed — urban scroll hint in CSS
 
   // ── Artist feature — scroll animacija
   // Ovi elementi NISU pod reveal-load/reveal sustavom

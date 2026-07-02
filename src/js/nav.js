@@ -1,24 +1,8 @@
 export function initNav() {
   const header = document.querySelector('.site-header');
-  const toggle = document.querySelector('.nav__toggle');
   const menu = document.querySelector('.nav__menu');
 
-  if (!header || !toggle || !menu) return;
-
-  const closeMenu = () => {
-    toggle.setAttribute('aria-expanded', 'false');
-    menu.classList.remove('is-open');
-  };
-
-  toggle.addEventListener('click', () => {
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    menu.classList.toggle('is-open', !isOpen);
-  });
-
-  menu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', closeMenu);
-  });
+  if (!header) return;
 
   const onScroll = () => {
     header.classList.toggle('is-scrolled', window.scrollY > 20);
@@ -26,6 +10,8 @@ export function initNav() {
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  if (!menu) return;
 
   menu.querySelectorAll('a').forEach((link) => {
     const href = link.getAttribute('href');
