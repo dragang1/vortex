@@ -1,11 +1,8 @@
-/* ============================================================
-   hero.css — Urban hero
-   ============================================================ */
-
 .hero {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 100svh;
   padding-top: var(--header-height);
   overflow: hidden;
@@ -95,7 +92,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  margin-top: auto;
+  margin-top: 0;
 }
 
 .hero__content {
@@ -104,7 +101,7 @@
   max-width: var(--container-max);
   width: min(calc(100% - var(--container-gutter) * 2), var(--container-max));
   margin-inline: auto;
-  padding-top: clamp(1.5rem, 5vw, var(--space-xl));
+  padding-top: clamp(1rem, 2.5vw, 2rem);
   padding-bottom: clamp(2rem, 6vw, var(--space-xl));
 }
 
@@ -317,6 +314,10 @@
 
   .hero__scroll-hint {
     display: none;
+  }
+
+  .hero {
+    padding-top: calc(var(--header-height) + 1.3rem);
   }
 }
 

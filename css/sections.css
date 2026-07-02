@@ -19,12 +19,22 @@
 .lineup-preview::before,
 .tickets::before,
 .news::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, transparent 0 48%, rgba(115, 230, 222, 0.08) 48% 49%, transparent 49% 100%),
-    linear-gradient(45deg, transparent 0 58%, rgba(255, 178, 63, 0.06) 58% 59%, transparent 59% 100%);
+    linear-gradient(
+      135deg,
+      transparent 0 48%,
+      rgba(115, 230, 222, 0.08) 48% 49%,
+      transparent 49% 100%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0 58%,
+      rgba(255, 178, 63, 0.06) 58% 59%,
+      transparent 59% 100%
+    );
   background-size: 9rem 9rem;
   pointer-events: none;
 }
@@ -76,7 +86,11 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.025)
+    ),
     rgba(8, 47, 69, 0.76);
   transition:
     transform var(--transition),
@@ -85,13 +99,21 @@
 }
 
 .artist-card::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: auto -15% -2.2rem;
   height: 4.3rem;
   background:
-    radial-gradient(60% 85% at 50% 100%, rgba(8, 217, 196, 0.28), transparent 72%),
-    repeating-radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 12px);
+    radial-gradient(
+      60% 85% at 50% 100%,
+      rgba(8, 217, 196, 0.28),
+      transparent 72%
+    ),
+    repeating-radial-gradient(
+      ellipse at 50% 100%,
+      rgba(255, 255, 255, 0.14) 0 1px,
+      transparent 1px 12px
+    );
   opacity: 0;
   transition: opacity var(--transition);
 }
@@ -114,9 +136,13 @@
   justify-content: end;
   background:
     linear-gradient(180deg, rgba(6, 26, 43, 0.12), rgba(6, 26, 43, 0.86)),
-    radial-gradient(circle at 84% 14%, rgba(255, 178, 63, 0.52), transparent 30%),
+    radial-gradient(
+      circle at 84% 14%,
+      rgba(255, 178, 63, 0.52),
+      transparent 30%
+    ),
     radial-gradient(circle at 8% 12%, rgba(8, 217, 196, 0.38), transparent 40%),
-    url('/logo instagram-01.jpg');
+    url("/logo instagram-01.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -125,9 +151,17 @@
   border-color: rgba(255, 178, 63, 0.58);
   background:
     linear-gradient(180deg, rgba(6, 26, 43, 0.05), rgba(6, 26, 43, 0.86)),
-    radial-gradient(circle at 82% 18%, rgba(255, 178, 63, 0.36), transparent 42%),
-    radial-gradient(circle at 12% 28%, rgba(8, 217, 196, 0.24), transparent 44%),
-    url('/logo instagram-01.jpg');
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(255, 178, 63, 0.36),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 12% 28%,
+      rgba(8, 217, 196, 0.24),
+      transparent 44%
+    ),
+    url("/logo instagram-01.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -170,35 +204,57 @@
 .destinations__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-md);
+  gap: var(--space-lg);
+  margin-top: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.destinations .section__eyebrow {
+  margin-bottom: 0.85rem;
+}
+
+.destinations .section__title {
+  margin-bottom: 0.9rem;
+}
+
+.destinations .section__subtitle {
+  margin: 0;
+  max-width: 42rem;
 }
 
 .destination-card {
   position: relative;
   overflow: hidden;
   min-height: 320px;
-  padding: var(--space-lg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: end;
   isolation: isolate;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
   transition:
     border-color var(--transition),
-    transform var(--transition);
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 .destination-card:hover {
   border-color: rgba(0, 245, 212, 0.35);
   transform: translateY(-3px);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.25);
 }
 
 .destination-card--main {
+  grid-column: 1 / -1;
   background:
     linear-gradient(180deg, rgba(6, 26, 43, 0.12) 10%, rgba(6, 26, 43, 0.95)),
-    radial-gradient(circle at 28% 18%, rgba(255, 178, 63, 0.5), transparent 42%),
-    url('/instagram2-01.jpg');
+    radial-gradient(
+      circle at 28% 18%,
+      rgba(255, 178, 63, 0.5),
+      transparent 42%
+    ),
+    url("/logo instagram-05.jpg");
   background-size: cover;
   background-position: center 42%;
 }
@@ -206,20 +262,36 @@
 .destination-card--warehouse {
   background:
     linear-gradient(180deg, rgba(6, 26, 43, 0.05) 10%, rgba(6, 26, 43, 0.95)),
-    radial-gradient(circle at 72% 18%, rgba(51, 199, 255, 0.42), transparent 45%),
-    radial-gradient(circle at 20% 28%, rgba(255, 111, 97, 0.28), transparent 35%),
+    radial-gradient(
+      circle at 72% 18%,
+      rgba(51, 199, 255, 0.42),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 20% 28%,
+      rgba(255, 111, 97, 0.28),
+      transparent 35%
+    ),
     var(--color-bg-card);
 }
 
 .destination-card::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: auto -8% -4rem;
   z-index: -1;
   height: 9rem;
   background:
-    radial-gradient(70% 75% at 50% 100%, rgba(8, 217, 196, 0.32), transparent 70%),
-    repeating-radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.18) 0 2px, transparent 2px 16px);
+    radial-gradient(
+      70% 75% at 50% 100%,
+      rgba(8, 217, 196, 0.32),
+      transparent 70%
+    ),
+    repeating-radial-gradient(
+      ellipse at 50% 100%,
+      rgba(255, 255, 255, 0.18) 0 2px,
+      transparent 2px 16px
+    );
 }
 
 .destination-card__label {
@@ -236,45 +308,77 @@
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: 0.04em;
   line-height: 0.95;
-  margin: var(--space-xs) 0;
+  margin: 0.35rem 0 0.7rem;
 }
 
 .destination-card__text {
   color: var(--color-text-muted);
-  max-width: 32ch;
+  max-width: 34ch;
+  margin: 0;
+  line-height: 1.7;
 }
 
 .free-entry__inner {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-  gap: var(--space-xl);
+  gap: clamp(1.25rem, 3vw, 2rem);
   align-items: center;
-  padding: clamp(1.5rem, 4vw, var(--space-lg));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
   background:
     linear-gradient(135deg, rgba(0, 245, 212, 0.04), transparent 50%),
     rgba(8, 47, 69, 0.4);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+.free-entry__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.free-entry__content .section__eyebrow {
+  margin-bottom: 0;
+}
+
+.free-entry__content .section__title {
+  margin-bottom: 0;
 }
 
 .free-entry__copy {
-  display: grid;
-  gap: var(--space-md);
-  justify-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .free-entry__copy p {
+  margin: 0;
   color: var(--color-text-muted);
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  line-height: 1.45;
+  font-size: clamp(1.02rem, 2vw, 1.2rem);
+  line-height: 1.7;
+  max-width: 34ch;
+}
+
+.free-entry__copy .btn {
+  margin-top: 0.1rem;
 }
 
 .register {
   background:
     linear-gradient(90deg, rgba(6, 26, 43, 0.82), rgba(6, 26, 43, 0.28)),
-    radial-gradient(circle at 82% 30%, rgba(255, 178, 63, 0.36), transparent 24rem),
-    radial-gradient(circle at 15% 78%, rgba(8, 217, 196, 0.22), transparent 28rem),
-    url('/instagram2-01.jpg');
+    radial-gradient(
+      circle at 82% 30%,
+      rgba(255, 178, 63, 0.36),
+      transparent 24rem
+    ),
+    radial-gradient(
+      circle at 15% 78%,
+      rgba(8, 217, 196, 0.22),
+      transparent 28rem
+    ),
+    url("/instagram2-01.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -347,21 +451,29 @@
 .news-card:nth-child(1) .news-card__image {
   background:
     linear-gradient(180deg, rgba(6, 26, 43, 0.02), rgba(6, 26, 43, 0.65)),
-    url('/instagram2-01.jpg');
+    url("/instagram2-01.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .news-card:nth-child(2) .news-card__image {
   background:
-    radial-gradient(circle at 75% 25%, rgba(255, 226, 168, 0.8), transparent 18%),
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(255, 226, 168, 0.8),
+      transparent 18%
+    ),
     linear-gradient(135deg, rgba(255, 111, 97, 0.52), rgba(8, 217, 196, 0.24)),
     var(--color-bg-elevated);
 }
 
 .news-card:nth-child(3) .news-card__image {
   background:
-    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 18px),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12) 0 2px,
+      transparent 2px 18px
+    ),
     linear-gradient(135deg, rgba(51, 199, 255, 0.42), rgba(255, 178, 63, 0.26)),
     var(--color-bg-elevated);
 }
@@ -404,7 +516,11 @@
   padding-top: calc(var(--header-height) + var(--space-xl));
   padding-bottom: var(--space-lg);
   background:
-    radial-gradient(circle at 80% 0%, rgba(255, 178, 63, 0.22), transparent 45%),
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(255, 178, 63, 0.22),
+      transparent 45%
+    ),
     var(--color-bg);
 }
 
