@@ -65,6 +65,35 @@
   color: var(--color-text);
 }
 
+.site-footer__credit {
+  font-size: 0.75rem !important;
+  opacity: 0.6;
+}
+
+.site-footer__credit a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.site-footer__credit a:hover {
+  opacity: 1;
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .site-footer__credit {
+    font-size: 0.65rem !important;
+    opacity: 0.5;
+  }
+}
+
+@media (min-width: 769px) {
+  .site-footer__credit {
+    order: 2;
+  }
+}
+
 @media (max-width: 768px) {
   .site-footer__grid {
     grid-template-columns: 1fr;
