@@ -44,6 +44,14 @@
   color: var(--color-neon);
 }
 
+.site-footer__links a:focus-visible,
+.site-footer__credit a:focus-visible {
+  color: var(--color-neon);
+  outline: 2px solid var(--color-neon);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
 .site-footer__bottom {
   display: flex;
   flex-wrap: wrap;

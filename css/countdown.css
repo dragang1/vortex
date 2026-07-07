@@ -1,0 +1,108 @@
+/* ============================================================
+   countdown.css — Festival countdown band
+   ============================================================ */
+
+.countdown {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(2.25rem, 6vw, 3.5rem);
+  background:
+    radial-gradient(
+      60% 120% at 50% 0%,
+      rgba(255, 178, 63, 0.14),
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--color-bg-elevated), var(--color-bg));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.countdown__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.6rem);
+  text-align: center;
+}
+
+.countdown__label {
+  font-family: var(--font-urban);
+  font-size: clamp(0.72rem, 2vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-neon);
+}
+
+.countdown__timer {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(0.5rem, 2.5vw, 1.25rem);
+}
+
+.countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: clamp(4rem, 16vw, 6.5rem);
+  padding: clamp(0.75rem, 2.5vw, 1.25rem) clamp(0.5rem, 2vw, 1rem);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-accent-hot);
+  border-radius: var(--radius-card);
+  background: rgba(6, 26, 43, 0.55);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+}
+
+.countdown__value {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown__unit-label {
+  font-family: var(--font-urban);
+  font-size: clamp(0.58rem, 1.6vw, 0.7rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.countdown__sep {
+  align-self: center;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--color-accent-hot);
+  opacity: 0.5;
+  line-height: 1;
+  padding-bottom: 1.2rem;
+}
+
+.countdown--live .countdown__label {
+  color: var(--color-street);
+}
+
+@media (max-width: 480px) {
+  .countdown__sep {
+    display: none;
+  }
+
+  .countdown__timer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+  }
+
+  .countdown__unit {
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown__value {
+    transition: none !important;
+  }
+}

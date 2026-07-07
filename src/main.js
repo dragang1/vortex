@@ -7,14 +7,20 @@ import "../css/sections.css";
 import "../css/footer.css";
 import "../css/sponsors.css";
 import "../css/lineup.css";
+import "../css/countdown.css";
+import "../css/enhance.css";
 
 import { initLoad } from "./js/load.js";
 import { initNav } from "./js/nav.js";
 import { initReveal } from "./js/reveal.js";
+import { initInteractions } from "./js/interactions.js";
+import { initCountdown } from "./js/countdown.js";
 
 initNav();
 initReveal();
 initLoad();
+initInteractions();
+initCountdown();
 
 // ── Smooth scroll ─────────────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -26,9 +32,4 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     e.preventDefault();
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
-});
-
-// ── Forma submit (preview) ────────────────────────────────────
-document.querySelectorAll(".register-form, .newsletter-form").forEach((f) => {
-  f.addEventListener("submit", (e) => e.preventDefault());
 });

@@ -83,6 +83,13 @@
   color: var(--color-text);
 }
 
+.nav__link:focus-visible {
+  color: var(--color-text);
+  outline: 2px solid var(--color-neon);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
 .nav__link--lineup::before {
   content: "";
   display: inline-block;

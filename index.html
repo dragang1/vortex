@@ -39,23 +39,76 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="image"
+      href="/hero-optimised.webp"
+      type="image/webp"
+    />
+    <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap"
     />
 
     <link rel="canonical" href="https://vortexmusicfest.com/" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>Vortex Urban Music Festival</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MusicEvent",
+        "name": "Vortex Urban Music Festival",
+        "description": "Vortex Urban Music Festival — prvo izdanje festivala na Savskom keju u Gradišci. Besplatan ulaz, 13. i 14. avgust 2026.",
+        "startDate": "2026-08-13",
+        "endDate": "2026-08-14",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "url": "https://vortexmusicfest.com/",
+        "image": "https://vortexmusicfest.com/og-image.jpg",
+        "location": {
+          "@type": "Place",
+          "name": "Savski kej",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Gradiška",
+            "addressCountry": "BA"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BAM",
+          "availability": "https://schema.org/InStock",
+          "url": "https://vortexmusicfest.com/#tickets"
+        },
+        "performer": [
+          { "@type": "MusicGroup", "name": "BIGru i Paja Kratak" },
+          { "@type": "MusicGroup", "name": "Cunami Flo" }
+        ],
+        "organizer": {
+          "@type": "Organization",
+          "name": "Vortex Urban Music Festival",
+          "url": "https://vortexmusicfest.com/"
+        }
+      }
+    </script>
   </head>
   <body class="is-loading">
+    <a href="#main" class="skip-link">Preskoči na sadržaj</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <load src="partials/nav.html" />
 
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__aurora" aria-hidden="true"></div>
         <div class="hero__grid-lines" aria-hidden="true"></div>
         <div class="hero__noise" aria-hidden="true"></div>
         <div class="hero__slash" aria-hidden="true"></div>
+        <div class="hero__lights" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
 
         <div class="hero__inner">
           <div class="hero__content">
@@ -110,7 +163,7 @@
               data-reveal-delay="320"
             >
               <div class="hero__stat">
-                <div class="hero__stat-value">2</div>
+                <div class="hero__stat-value" data-count="2">2</div>
                 <div class="hero__stat-label">Festivalska dana</div>
               </div>
               <div class="hero__stat">
@@ -118,7 +171,7 @@
                 <div class="hero__stat-label">Ulaz oba dana</div>
               </div>
               <div class="hero__stat">
-                <div class="hero__stat-value">2026</div>
+                <div class="hero__stat-value" data-count="2026">2026</div>
                 <div class="hero__stat-label">Prvo izdanje</div>
               </div>
             </div>
@@ -130,6 +183,118 @@
         </div>
       </section>
 
+      <section class="countdown" aria-label="Odbrojavanje do festivala">
+        <div class="container countdown__inner reveal">
+          <p class="countdown__label">Vortex počinje za</p>
+          <div class="countdown__timer" data-countdown="2026-08-13T18:00:00">
+            <div class="countdown__unit">
+              <span class="countdown__value" data-unit="days">00</span>
+              <span class="countdown__unit-label">Dana</span>
+            </div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit">
+              <span class="countdown__value" data-unit="hours">00</span>
+              <span class="countdown__unit-label">Sati</span>
+            </div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit">
+              <span class="countdown__value" data-unit="minutes">00</span>
+              <span class="countdown__unit-label">Minuta</span>
+            </div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit">
+              <span class="countdown__value" data-unit="seconds">00</span>
+              <span class="countdown__unit-label">Sekundi</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__row">
+          <div class="ticker__track">
+            <span class="ticker__chip ticker__chip--solid">Vortex 2026</span>
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--outline">Savski kej</span>
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--solid">Free entry</span>
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--outline"
+              >13 &amp; 14 avgust</span
+            >
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--solid">Urban music</span>
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--outline">Gradiška</span>
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--solid" aria-hidden="true"
+              >Vortex 2026</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+            <span class="ticker__chip ticker__chip--outline" aria-hidden="true"
+              >Savski kej</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+            <span class="ticker__chip ticker__chip--solid" aria-hidden="true"
+              >Free entry</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+            <span class="ticker__chip ticker__chip--outline" aria-hidden="true"
+              >13 &amp; 14 avgust</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+            <span class="ticker__chip ticker__chip--solid" aria-hidden="true"
+              >Urban music</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+            <span class="ticker__chip ticker__chip--outline" aria-hidden="true"
+              >Gradiška</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+          </div>
+        </div>
+        <div class="ticker__row ticker__row--reverse">
+          <div class="ticker__track">
+            <span class="ticker__chip ticker__chip--artist"
+              >BIGru i Paja Kratak</span
+            >
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--artist-alt"
+              >Cunami Flo</span
+            >
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--artist"
+              >BIGru i Paja Kratak</span
+            >
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--artist-alt"
+              >Cunami Flo</span
+            >
+            <span class="ticker__slash">//</span>
+            <span class="ticker__chip ticker__chip--artist" aria-hidden="true"
+              >BIGru i Paja Kratak</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+            <span
+              class="ticker__chip ticker__chip--artist-alt"
+              aria-hidden="true"
+              >Cunami Flo</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+            <span class="ticker__chip ticker__chip--artist" aria-hidden="true"
+              >BIGru i Paja Kratak</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+            <span
+              class="ticker__chip ticker__chip--artist-alt"
+              aria-hidden="true"
+              >Cunami Flo</span
+            >
+            <span class="ticker__slash" aria-hidden="true">//</span>
+          </div>
+        </div>
+      </div>
+
       <section
         class="section lineup-preview"
         id="lineup"
@@ -140,7 +305,9 @@
           <div class="lineup-preview__header reveal">
             <div>
               <span class="section__eyebrow">Lineup</span>
-              <h2 class="section__title" id="lineup-title">Izvođači</h2>
+              <h2 class="section__title section__title--xl" id="lineup-title">
+                Izvođači
+              </h2>
               <p class="section__subtitle">
                 Dva festivalska dana uz Savu — prati najave i potvrđene
                 headlinere.
@@ -148,30 +315,45 @@
             </div>
           </div>
 
-          <!-- ── 13. AVGUST — placeholder ── -->
+          <!-- ── 13. AVGUST — najave ── -->
           <div class="lineup-day reveal">
             <div class="lineup-day__title">
               <span class="lineup-day__date">13. AVGUST</span>
               <span class="lineup-day__stage">— Prvi dan</span>
             </div>
 
-            <div class="lineup-coming-soon">
-              <div class="coming-soon__text">
+            <div class="lineup-mystery">
+              <div class="lineup-mystery__grid">
+                <article class="mystery-card" aria-hidden="true">
+                  <span class="mystery-card__mark">?</span>
+                  <span class="mystery-card__tag">Uskoro</span>
+                </article>
+                <article class="mystery-card" aria-hidden="true">
+                  <span class="mystery-card__mark">?</span>
+                  <span class="mystery-card__tag">Uskoro</span>
+                </article>
+                <article class="mystery-card" aria-hidden="true">
+                  <span class="mystery-card__mark">?</span>
+                  <span class="mystery-card__tag">Uskoro</span>
+                </article>
+              </div>
+
+              <div class="lineup-mystery__text">
                 <span class="coming-soon__label">Uskoro objavljujemo</span>
                 <h3 class="coming-soon__title">Izvođači prvog dana</h3>
                 <p class="coming-soon__desc">
                   Pripremamo iznenađenja za 13. avgust. Prati naše kanale za
                   prve najave izvođača Savskog keja.
                 </p>
+                <a
+                  href="https://www.instagram.com/vortex.musicfest/"
+                  class="btn btn--primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Prati najave
+                </a>
               </div>
-              <a
-                href="https://www.instagram.com/vortex.musicfest/"
-                class="btn btn--secondary coming-soon__btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Prati najave
-              </a>
             </div>
           </div>
 
@@ -184,7 +366,11 @@
 
             <div class="artist-showcase">
               <article class="artist-feature reveal">
-                <div class="artist-feature__photo">
+                <div
+                  class="artist-feature__photo tilt glow-follow"
+                  data-tilt
+                  data-tilt-max="5"
+                >
                   <img
                     src="/bigru.jpg"
                     alt="BIGru i Paja Kratak"
@@ -265,23 +451,16 @@
 
               <div class="artist-separator" aria-hidden="true">
                 <div class="artist-separator__line"></div>
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M16 2L18.4 13.6L30 16L18.4 18.4L16 30L13.6 18.4L2 16L13.6 13.6Z"
-                    fill="#ff8c1a"
-                  />
-                </svg>
+                <span class="artist-separator__mark">//</span>
                 <div class="artist-separator__line"></div>
               </div>
 
               <article class="artist-feature artist-feature--reverse reveal">
-                <div class="artist-feature__photo">
+                <div
+                  class="artist-feature__photo tilt glow-follow"
+                  data-tilt
+                  data-tilt-max="5"
+                >
                   <img
                     src="/cunamiflo.jpeg"
                     alt="Cunami Flo"
@@ -365,7 +544,8 @@
 
       <!-- LOKACIJA -->
       <section
-        class="section destinations"
+        class="section section--warm destinations"
+        id="lokacija"
         aria-labelledby="destinations-title"
       >
         <div class="container">
@@ -381,7 +561,6 @@
             <article
               class="destination-card destination-card--main reveal reveal--left"
             >
-              <span class="destination-card__label">Festival zona</span>
               <h3 class="destination-card__title">Savski kej</h3>
               <p class="destination-card__text">
                 Open-air atmosfera uz rijeku, napravljena za prvi Vortex i
@@ -412,7 +591,17 @@
               Ulaz besplatan oba dana — povedi prijatelje i uživaj u ljetnom
               ritmu uz Savu.
             </p>
-            <a href="#lineup" class="btn btn--primary">Pogledaj lineup</a>
+            <div class="free-entry__actions">
+              <a href="#lineup" class="btn btn--primary">Pogledaj lineup</a>
+              <a
+                href="https://www.instagram.com/vortex.musicfest/"
+                class="btn btn--secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Prati na Instagramu
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -427,15 +616,15 @@
       >
         <div class="container sponsors__inner">
           <div class="reveal">
-            <span class="section__eyebrow" id="sponsors-title"
-              >Sponzori festivala</span
-            >
+            <h2 class="section__eyebrow" id="sponsors-title">
+              Sponzori festivala
+            </h2>
             <p class="section__subtitle sponsors__thanks">
               Zahvaljujemo našim partnerima.
             </p>
           </div>
           <div class="sponsors__center">
-            <div class="sponsor-card reveal">
+            <div class="sponsor-card reveal glow-follow">
               <div class="sponsor-card__role">Glavni sponzor</div>
               <img
                 src="/gradgradiskalogo.png"

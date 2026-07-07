@@ -62,33 +62,103 @@
   letter-spacing: 0.18em;
 }
 
-/* ── COMING SOON ── */
-.lineup-coming-soon {
+/* ── COMING SOON / MYSTERY LINEUP ── */
+.lineup-mystery {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, var(--space-xl));
+  align-items: center;
+}
+
+.lineup-mystery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.6rem, 1.5vw, 1rem);
+}
+
+.mystery-card {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-lg);
-  padding: clamp(1.25rem, 4vw, var(--space-xl));
-  border: 1px solid rgba(0, 245, 212, 0.22);
-  border-left: 3px solid var(--color-neon);
-  border-radius: 1.15rem;
-  background: rgba(6, 26, 43, 0.58);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
+  justify-content: center;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at 50% 32%, rgba(255, 178, 63, 0.28), transparent 55%),
+    linear-gradient(160deg, #0d2233 0%, #123a52 55%, #0d2840 100%);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
   transition:
+    transform var(--transition),
     border-color var(--transition),
-    background var(--transition),
-    transform var(--transition);
+    box-shadow var(--transition);
 }
 
-.lineup-coming-soon:hover {
+.mystery-card:hover {
+  transform: translateY(-4px);
   border-color: rgba(0, 245, 212, 0.4);
-  background: rgba(0, 245, 212, 0.04);
-  transform: translateY(-2px);
+  box-shadow:
+    0 20px 46px rgba(0, 0, 0, 0.4),
+    0 0 26px rgba(0, 245, 212, 0.22);
 }
 
-.coming-soon__text {
-  flex: 1;
-  min-width: 0;
+.mystery-card__mark {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+  filter: blur(1.5px);
+  text-shadow: 0 0 30px rgba(0, 245, 212, 0.5);
+  animation: mysteryPulse 3s ease-in-out infinite;
+}
+
+.mystery-card:nth-child(2) .mystery-card__mark {
+  animation-delay: 0.5s;
+}
+
+.mystery-card:nth-child(3) .mystery-card__mark {
+  animation-delay: 1s;
+}
+
+@keyframes mysteryPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.mystery-card__tag {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-sm);
+  background: rgba(6, 26, 43, 0.8);
+  border: 1px solid var(--color-border);
+  color: var(--color-neon);
+  font-family: var(--font-urban);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.lineup-mystery__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.lineup-mystery__text .btn {
+  margin-top: 0.4rem;
 }
 
 .coming-soon__label {
@@ -118,11 +188,6 @@
   max-width: 44ch;
   line-height: 1.65;
   margin: 0;
-}
-
-.coming-soon__btn {
-  flex-shrink: 0;
-  align-self: center;
 }
 
 /* ── ARTIST SHOWCASE ── */
@@ -331,11 +396,20 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 178, 63, 0.35),
-    rgba(8, 217, 196, 0.35),
-    rgba(255, 178, 63, 0.35),
+    rgba(255, 255, 255, 0.12),
+    rgba(0, 245, 212, 0.35),
+    rgba(255, 255, 255, 0.12),
     transparent
   );
+}
+
+.artist-separator__mark {
+  flex-shrink: 0;
+  font-family: var(--font-urban);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.28);
 }
 
 /* ── RESPONSIVE ── */
@@ -354,18 +428,18 @@
     max-height: 420px;
   }
 
-  .lineup-coming-soon {
-    flex-direction: column;
+  .lineup-mystery {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .lineup-mystery__text {
+    align-items: center;
     text-align: center;
   }
 
   .coming-soon__desc {
     margin-inline: auto;
-  }
-
-  .coming-soon__btn {
-    width: 100%;
-    max-width: 18rem;
   }
 }
 
@@ -379,22 +453,18 @@
     max-height: none;
   }
 
-  .lineup-coming-soon {
-    padding: var(--space-md);
+  .lineup-mystery__grid {
+    gap: 0.5rem;
   }
 
   .coming-soon__title {
     font-size: clamp(1.4rem, 7vw, 1.9rem);
   }
-
-  .artist-separator svg {
-    width: 24px;
-    height: 24px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .coming-soon__icon {
+  .mystery-card__mark {
     animation: none;
+    opacity: 0.8;
   }
 }
