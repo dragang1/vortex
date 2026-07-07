@@ -101,14 +101,9 @@
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__bg" aria-hidden="true"></div>
-        <div class="hero__aurora" aria-hidden="true"></div>
         <div class="hero__grid-lines" aria-hidden="true"></div>
         <div class="hero__noise" aria-hidden="true"></div>
         <div class="hero__slash" aria-hidden="true"></div>
-        <div class="hero__lights" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
 
         <div class="hero__inner">
           <div class="hero__content">
@@ -121,8 +116,18 @@
             </div>
 
             <h1 class="hero__title" id="hero-title">
-              <span class="hero__title-line">VORTEX</span>
-              <span class="hero__title-line hero__title-line--year">2026</span>
+              <span
+                class="hero__title-line reveal-load reveal-load--clip"
+                data-reveal-delay="80"
+              >
+                <span class="reveal-load__inner">VORTEX</span>
+              </span>
+              <span
+                class="hero__title-line hero__title-line--year reveal-load reveal-load--clip"
+                data-reveal-delay="160"
+              >
+                <span class="reveal-load__inner">2026</span>
+              </span>
             </h1>
 
             <p
@@ -133,18 +138,18 @@
             </p>
 
             <div
-              class="hero__meta reveal-load reveal-load--fade-up"
-              data-reveal-delay="220"
+              class="hero__meta reveal-load reveal-stagger reveal-load--fade-up"
+              data-reveal-delay="280"
             >
-              <div class="hero__meta-item">
+              <div class="hero__meta-item reveal-stagger__item">
                 <strong>13. i 14. AVGUST</strong>
                 Savski kej, Gradiška
               </div>
-              <div class="hero__meta-item">
+              <div class="hero__meta-item reveal-stagger__item">
                 <strong>14. AVGUST</strong>
                 BIGru, Paja Kratak i Cunami Flo
               </div>
-              <div class="hero__meta-item">
+              <div class="hero__meta-item reveal-stagger__item">
                 <strong>FREE ENTRY</strong>
                 Ulaz besplatan oba dana
               </div>
@@ -152,28 +157,10 @@
 
             <div
               class="hero__actions reveal-load reveal-load--fade-up"
-              data-reveal-delay="280"
+              data-reveal-delay="380"
             >
               <a href="#lineup" class="btn btn--primary">Pogledaj lineup</a>
               <a href="#tickets" class="btn btn--secondary">Free entry</a>
-            </div>
-
-            <div
-              class="hero__stats reveal-load reveal-load--fade-up"
-              data-reveal-delay="320"
-            >
-              <div class="hero__stat">
-                <div class="hero__stat-value" data-count="2">2</div>
-                <div class="hero__stat-label">Festivalska dana</div>
-              </div>
-              <div class="hero__stat">
-                <div class="hero__stat-value">FREE</div>
-                <div class="hero__stat-label">Ulaz oba dana</div>
-              </div>
-              <div class="hero__stat">
-                <div class="hero__stat-value" data-count="2026">2026</div>
-                <div class="hero__stat-label">Prvo izdanje</div>
-              </div>
             </div>
           </div>
         </div>

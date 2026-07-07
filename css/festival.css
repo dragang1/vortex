@@ -46,8 +46,14 @@
   font-size: clamp(0.72rem, 1.8vw, 0.88rem);
 }
 
-.hero__title .reveal-load__inner {
-  display: inline-block;
+.hero__title-line.reveal-load--clip {
+  display: block;
+  overflow: hidden;
+}
+
+.hero__title-line .reveal-load__inner {
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .section__title,

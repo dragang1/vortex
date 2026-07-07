@@ -24,134 +24,6 @@
   will-change: transform;
 }
 
-/* ── Hero aurora — warm summer glow drifting behind content ─ */
-.hero__aurora {
-  position: absolute;
-  inset: -20%;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      38% 46% at 18% 30%,
-      rgba(255, 178, 63, 0.32),
-      transparent 70%
-    ),
-    radial-gradient(
-      42% 50% at 82% 22%,
-      rgba(255, 107, 53, 0.24),
-      transparent 72%
-    ),
-    radial-gradient(
-      46% 52% at 60% 80%,
-      rgba(0, 245, 212, 0.22),
-      transparent 70%
-    );
-  filter: blur(20px);
-  opacity: 0.85;
-  mix-blend-mode: screen;
-  animation: auroraDrift 18s ease-in-out infinite alternate;
-}
-
-@keyframes auroraDrift {
-  0% {
-    transform: translate3d(-3%, -2%, 0) scale(1.05);
-  }
-  50% {
-    transform: translate3d(2%, 3%, 0) scale(1.12);
-  }
-  100% {
-    transform: translate3d(4%, -1%, 0) scale(1.06);
-  }
-}
-
-/* ── Floating festival lights (fireflies) ───────────────────── */
-.hero__lights {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.hero__lights span {
-  position: absolute;
-  bottom: -10%;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 226, 168, 0.95),
-    rgba(255, 178, 63, 0.35) 60%,
-    transparent 70%
-  );
-  box-shadow: 0 0 8px rgba(255, 210, 120, 0.7);
-  opacity: 0;
-  animation: floatUp linear infinite;
-}
-
-.hero__lights span:nth-child(1)  { left: 8%;  width: 5px;  height: 5px;  animation-duration: 11s; animation-delay: 0s; }
-.hero__lights span:nth-child(2)  { left: 20%; width: 8px;  height: 8px;  animation-duration: 15s; animation-delay: 2s; }
-.hero__lights span:nth-child(3)  { left: 33%; width: 4px;  height: 4px;  animation-duration: 9s;  animation-delay: 4s; }
-.hero__lights span:nth-child(4)  { left: 46%; width: 7px;  height: 7px;  animation-duration: 14s; animation-delay: 1s; }
-.hero__lights span:nth-child(5)  { left: 58%; width: 5px;  height: 5px;  animation-duration: 12s; animation-delay: 5s; }
-.hero__lights span:nth-child(6)  { left: 70%; width: 9px;  height: 9px;  animation-duration: 17s; animation-delay: 3s; }
-.hero__lights span:nth-child(7)  { left: 82%; width: 4px;  height: 4px;  animation-duration: 10s; animation-delay: 6s; }
-.hero__lights span:nth-child(8)  { left: 90%; width: 6px;  height: 6px;  animation-duration: 13s; animation-delay: 2.5s; }
-.hero__lights span:nth-child(9)  { left: 14%; width: 6px;  height: 6px;  animation-duration: 16s; animation-delay: 7s; }
-.hero__lights span:nth-child(10) { left: 64%; width: 5px;  height: 5px;  animation-duration: 11s; animation-delay: 8s; }
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.9;
-  }
-  50% {
-    transform: translateY(-55vh) translateX(18px);
-    opacity: 0.8;
-  }
-  90% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(-105vh) translateX(-10px);
-    opacity: 0;
-  }
-}
-
-/* ── Hero title shimmer sweep ───────────────────────────────── */
-.hero__title-line:first-child {
-  background:
-    linear-gradient(
-      100deg,
-      #ffffff 0%,
-      #ffffff 40%,
-      var(--color-neon) 50%,
-      #ffffff 60%,
-      #ffffff 100%
-    );
-  background-size: 250% 100%;
-  background-position: 120% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: titleSheen 6s ease-in-out 1.2s infinite;
-}
-
-@keyframes titleSheen {
-  0%,
-  70%,
-  100% {
-    background-position: 120% 0;
-  }
-  85% {
-    background-position: -30% 0;
-  }
-}
-
 /* ── Button shine sweep ─────────────────────────────────────── */
 .btn {
   position: relative;
@@ -438,23 +310,11 @@
 
 /* ── Respect reduced motion ─────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .hero__aurora,
-  .hero__lights span,
-  .hero__title-line:first-child,
   .btn::after,
   .ticker__track,
   .section__eyebrow::before,
   .artist-feature__confirmed::before {
     animation: none !important;
-  }
-
-  .hero__title-line:first-child {
-    -webkit-text-fill-color: #ffffff;
-    background: none;
-  }
-
-  .hero__lights {
-    display: none;
   }
 
   .scroll-progress {

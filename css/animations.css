@@ -6,6 +6,10 @@
   overflow: hidden;
 }
 
+.reveal-load--clip.is-visible {
+  opacity: 1;
+}
+
 .reveal-load--clip .reveal-load__inner {
   display: block;
   transform: translateY(105%);
