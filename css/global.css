@@ -7,21 +7,30 @@
 }
 
 :root {
-  --color-bg: #061a2b;
-  --color-bg-elevated: #082f45;
-  --color-bg-card: rgba(8, 47, 69, 0.76);
-  --color-border: rgba(115, 230, 222, 0.32);
-  --color-text: #ffffff;
-  --color-text-muted: #d2f1f5;
-  --color-accent: #08d9c4;
-  --color-accent-hot: #ffb23f;
-  --color-accent-cyan: #33c7ff;
-  --color-coral: #ff6f61;
-  --color-sand: #ffe2a8;
-  --color-neon: #00f5d4;
-  --color-street: #ff6b35;
-  --font-display:
-    "Bebas Neue", "Anton", Impact, "Arial Narrow", sans-serif;
+  /* Coastal Modern — warm sand base, deep teal, fresh turquoise */
+  --color-bg: #f5f1e8;
+  --color-bg-elevated: #fbf9f3;
+  --color-bg-card: #fbf9f3;
+  --color-border: rgba(18, 48, 43, 0.12);
+  --color-text: #12302b;
+  --color-text-muted: #5c6f6a;
+  --color-deep-teal: #0c3b37;
+  --color-accent: #14b8a6;
+  --color-accent-hot: #0e8f80;
+  --color-accent-cyan: #2dd4bf;
+  --color-coral: #2dd4bf;
+  --color-sand: #0e5c55;
+  --color-neon: #0e8f80;
+  --color-street: #14b8a6;
+  --color-azure: #14b8a6;
+  --gradient-brand: linear-gradient(120deg, #0e5c55, #14b8a6 60%, #2dd4bf);
+  /* Surface tokens — flat cream cards, hairline borders, soft diffuse shadow */
+  --glass-bg: rgba(14, 92, 85, 0.05);
+  --glass-bg-strong: #fbf9f3;
+  --glass-border: rgba(18, 48, 43, 0.12);
+  --glass-blur: blur(0);
+  --glass-shadow: 0 18px 46px rgba(12, 59, 55, 0.1);
+  --font-display: "Space Grotesk", "Poppins", system-ui, sans-serif;
   --font-body: "Poppins", system-ui, -apple-system, sans-serif;
   --font-urban: "Space Grotesk", "Poppins", system-ui, sans-serif;
   --space-xs: 0.5rem;
@@ -30,10 +39,10 @@
   --space-lg: 2.5rem;
   --space-xl: 4rem;
   --space-2xl: 6rem;
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
-  --radius-card: 10px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-card: 18px;
   --radius-pill: 999px;
   --container-max: 1200px;
   --container-gutter: clamp(1.25rem, 4vw, 2rem);
@@ -76,13 +85,26 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 1rem;
-  background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(
+      110% 80% at 50% -8%,
+      rgba(45, 212, 191, 0.12) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      70% 55% at 88% 6%,
+      rgba(20, 184, 166, 0.08) 0%,
+      transparent 50%
+    );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 body::before {
@@ -91,8 +113,31 @@ body::before {
   inset: 0;
   z-index: 9990;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Deep-teal bands & media cards: re-map tokens to cream-on-teal */
+.site-header,
+.hero,
+.site-footer,
+.countdown,
+.destination-card,
+.mystery-card {
+  --color-text: #fbf9f3;
+  --color-text-muted: rgba(240, 246, 243, 0.78);
+  --color-neon: #2dd4bf;
+  --color-accent: #2dd4bf;
+  --color-accent-hot: #2dd4bf;
+  --color-accent-cyan: #2dd4bf;
+  --color-border: rgba(251, 249, 243, 0.2);
+  --glass-bg: rgba(251, 249, 243, 0.08);
+  --glass-bg-strong: rgba(251, 249, 243, 0.12);
+  --glass-border: rgba(251, 249, 243, 0.22);
+}
+
+.hero {
+  --color-bg: #0c3b37;
 }
 
 img {
@@ -122,39 +167,36 @@ input {
   margin-inline: auto;
 }
 
-.section {
-  padding-block: clamp(3rem, 8vw, var(--space-2xl));
-  background:
-    linear-gradient(180deg, rgba(8, 47, 69, 0.35) 0%, transparent 8rem),
-    radial-gradient(
-      circle at 8% 0%,
-      rgba(0, 245, 212, 0.06),
-      transparent 34rem
-    ),
-    radial-gradient(
-      circle at 92% 12%,
-      rgba(255, 107, 53, 0.05),
-      transparent 30rem
-    ),
-    var(--color-bg);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+/* Display font (Space Grotesk) needs an explicit heavy weight */
+.section__title,
+.hero__title,
+.hero__meta-item strong,
+.hero__stat-value,
+.destination-card__title,
+.coming-soon__title,
+.artist-feature__name,
+.lineup-day__date,
+.countdown__value,
+.countdown__sep,
+.mystery-card__mark,
+.sponsor-card__name,
+.ticker__chip {
+  font-weight: 700;
 }
 
-/* Warm summer-sunset variant for alternating sections */
+.section {
+  padding-block: clamp(3.5rem, 9vw, var(--space-2xl));
+  background: transparent;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Subtle cream lift for alternating sections */
 .section--warm {
-  background:
-    linear-gradient(180deg, rgba(255, 178, 63, 0.12) 0%, transparent 9rem),
-    radial-gradient(
-      circle at 12% 6%,
-      rgba(255, 107, 53, 0.16),
-      transparent 36rem
-    ),
-    radial-gradient(
-      circle at 88% 84%,
-      rgba(255, 178, 63, 0.12),
-      transparent 32rem
-    ),
-    var(--color-bg);
+  background: linear-gradient(
+    180deg,
+    rgba(251, 249, 243, 0.55),
+    transparent 65%
+  );
 }
 
 .section__eyebrow {
@@ -162,7 +204,7 @@ input {
   align-items: center;
   gap: 0.65rem;
   margin-bottom: var(--space-sm);
-  color: var(--color-neon);
+  color: var(--color-accent-hot);
   font-family: var(--font-urban);
   font-size: 0.72rem;
   font-weight: 700;
@@ -174,22 +216,23 @@ input {
   content: "";
   width: 1.75rem;
   height: 2px;
-  background: var(--color-neon);
+  background: var(--gradient-brand);
 }
 
 .section__title {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
-  letter-spacing: 0.06em;
-  line-height: 0.92;
+  font-size: clamp(1.9rem, 4.5vw, 3.35rem);
+  letter-spacing: -0.02em;
+  line-height: 1.02;
   margin-bottom: var(--space-md);
   text-transform: uppercase;
   text-wrap: balance;
 }
 
 .section__title--xl {
-  font-size: clamp(2.75rem, 8vw, 6rem);
-  letter-spacing: 0.04em;
+  font-size: clamp(2.2rem, 6vw, 4.25rem);
+  letter-spacing: -0.025em;
+  line-height: 0.98;
 }
 
 @media (max-width: 640px) {
@@ -215,9 +258,9 @@ input {
   justify-content: center;
   gap: 0.5rem;
   min-height: 3rem;
-  padding: 0.85rem 1.65rem;
+  padding: 0.85rem 1.85rem;
   border: 2px solid transparent;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   font-family: var(--font-urban);
   font-size: 0.78rem;
   font-weight: 700;
@@ -236,28 +279,29 @@ input {
 }
 
 .btn--primary {
-  background: #ffffff;
-  border-color: #ffffff;
-  color: var(--color-bg);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #06231f;
+  box-shadow: 0 12px 28px rgba(14, 92, 85, 0.28);
 }
 
 .btn--primary:hover {
-  background: var(--color-neon);
-  border-color: var(--color-neon);
-  color: var(--color-bg);
+  background: #10a595;
+  border-color: #10a595;
+  color: #06231f;
+  box-shadow: 0 16px 36px rgba(14, 92, 85, 0.34);
 }
 
 .btn--secondary {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: var(--glass-border);
   color: var(--color-text);
 }
 
 .btn--secondary:hover {
-  border-color: var(--color-neon);
-  color: var(--color-neon);
-  background: rgba(0, 245, 212, 0.06);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--glass-bg);
 }
 
 .skip-link {

@@ -4,16 +4,17 @@
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 16vw, 11rem);
-  line-height: 0.85;
+  font-size: clamp(3rem, 10.5vw, 7rem);
+  font-weight: 700;
+  line-height: 0.92;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.035em;
   margin: 0 0 0.1em;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.08em 0.18em;
+  gap: 0.05em 0.22em;
 }
 
 .hero__title-line {
@@ -23,8 +24,8 @@
 .hero__title-line:first-child {
   color: #ffffff;
   text-shadow:
-    3px 3px 0 rgba(0, 0, 0, 0.45),
-    0 0 60px rgba(0, 245, 212, 0.12);
+    3px 3px 0 rgba(0, 0, 0, 0.35),
+    0 0 70px rgba(45, 212, 191, 0.25);
 }
 
 /* 2026 — čista bijela */
@@ -56,9 +57,8 @@
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.section__title,
 .hero__meta-item strong {
-  letter-spacing: 0.06em;
+  letter-spacing: -0.01em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -74,7 +74,7 @@
 
 @media (max-width: 640px) {
   .hero__title {
-    font-size: clamp(3.5rem, 20vw, 5.5rem);
+    font-size: clamp(2.6rem, 15vw, 4.2rem);
     flex-direction: column;
     align-items: flex-start;
     gap: 0;

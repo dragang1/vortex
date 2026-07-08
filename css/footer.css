@@ -1,7 +1,7 @@
 .site-footer {
   padding-block: var(--space-xl) var(--space-lg);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: var(--color-bg-elevated);
+  border-top: 1px solid rgba(251, 249, 243, 0.14);
+  background: linear-gradient(180deg, #0e5c55, #0c3b37);
 }
 
 .site-footer__grid {

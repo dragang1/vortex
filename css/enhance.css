@@ -19,7 +19,7 @@
     var(--color-accent-hot) 55%,
     var(--color-street)
   );
-  box-shadow: 0 0 12px rgba(0, 245, 212, 0.6);
+  box-shadow: 0 0 14px rgba(20, 184, 166, 0.5);
   pointer-events: none;
   will-change: transform;
 }
@@ -61,9 +61,7 @@
 }
 
 .btn--primary:hover {
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.35),
-    0 0 22px rgba(0, 245, 212, 0.35);
+  box-shadow: 0 16px 36px rgba(14, 92, 85, 0.34);
 }
 
 /* ── Festival ticker — dual-row chip marquee ─────────────────── */
@@ -75,7 +73,8 @@
   gap: 0.35rem;
   padding-block: clamp(0.85rem, 2.5vw, 1.35rem);
   background: var(--color-bg);
-  border-block: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .ticker::before {
@@ -83,19 +82,13 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(
-      90deg,
-      var(--color-bg) 0%,
-      transparent 14%,
-      transparent 86%,
-      var(--color-bg) 100%
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.025) 0 1px,
-      transparent 1px 48px
-    );
+  background: linear-gradient(
+    90deg,
+    var(--color-bg) 0%,
+    transparent 12%,
+    transparent 88%,
+    var(--color-bg) 100%
+  );
   z-index: 2;
 }
 
@@ -133,8 +126,8 @@
   padding: 0.45rem clamp(0.85rem, 2.5vw, 1.35rem);
   border-radius: var(--radius-pill);
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 3.2vw, 2.15rem);
-  letter-spacing: 0.05em;
+  font-size: clamp(1.1rem, 3vw, 1.9rem);
+  letter-spacing: -0.01em;
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
@@ -146,34 +139,29 @@
 
 .ticker__chip--solid {
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
 }
 
 .ticker__chip--outline {
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.45);
+  -webkit-text-stroke: 1px rgba(18, 48, 43, 0.42);
   background: transparent;
-  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border: 1px dashed rgba(18, 48, 43, 0.2);
 }
 
 .ticker__chip--artist {
-  color: var(--color-neon);
-  background: rgba(0, 245, 212, 0.07);
-  border: 1px solid rgba(0, 245, 212, 0.35);
-  box-shadow: 0 0 20px rgba(0, 245, 212, 0.12);
+  color: var(--color-accent-hot);
+  background: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.4);
+  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.12);
 }
 
 .ticker__chip--artist-alt {
-  color: var(--color-text);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 178, 63, 0.18),
-    rgba(255, 107, 53, 0.1)
-  );
-  border: 1px solid rgba(255, 178, 63, 0.35);
+  color: #fbf9f3;
+  background: var(--gradient-brand);
+  border: 1px solid transparent;
+  box-shadow: 0 6px 22px rgba(14, 92, 85, 0.28);
 }
 
 .ticker__slash {
@@ -183,12 +171,12 @@
   font-size: clamp(0.75rem, 2vw, 0.95rem);
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.22);
+  color: rgba(18, 48, 43, 0.28);
   user-select: none;
 }
 
 .ticker__row--reverse .ticker__slash {
-  color: rgba(0, 245, 212, 0.35);
+  color: rgba(20, 184, 166, 0.55);
 }
 
 @keyframes tickerScroll {
@@ -217,11 +205,11 @@
 @keyframes eyebrowPulse {
   0%,
   100% {
-    box-shadow: 0 0 0 rgba(0, 245, 212, 0);
+    box-shadow: 0 0 0 rgba(20, 184, 166, 0);
     transform: scaleX(1);
   }
   50% {
-    box-shadow: 0 0 10px rgba(0, 245, 212, 0.7);
+    box-shadow: 0 0 10px rgba(20, 184, 166, 0.7);
     transform: scaleX(1.35);
   }
 }
@@ -271,10 +259,10 @@
 }
 
 .artist-feature__photo:hover {
-  border-color: rgba(0, 245, 212, 0.45);
+  border-color: rgba(45, 212, 191, 0.5);
   box-shadow:
-    0 22px 60px rgba(0, 0, 0, 0.45),
-    0 0 28px rgba(0, 245, 212, 0.25);
+    0 26px 60px rgba(12, 59, 55, 0.28),
+    0 0 30px rgba(20, 184, 166, 0.2);
 }
 
 /* Sheen that follows the pointer on cards */
@@ -290,7 +278,7 @@
   border-radius: inherit;
   background: radial-gradient(
     22rem 22rem at var(--mx, 50%) var(--my, 50%),
-    rgba(0, 245, 212, 0.18),
+    rgba(20, 184, 166, 0.16),
     transparent 60%
   );
   opacity: 0;
