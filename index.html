@@ -154,8 +154,8 @@
                 BIGru, Paja Kratak i Cunami Flo
               </div>
               <div class="hero__meta-item reveal-stagger__item">
-                <strong>FREE ENTRY</strong>
-                Ulaz besplatan oba dana
+                <strong>CHILL ZONE</strong>
+                Dance, DJ &amp; Street Art
               </div>
             </div>
 
@@ -518,7 +518,7 @@
                     Kultni duo beogradskog undergrounda — sirova energija,
                     britke rime, nezaboravan nastup.
                   </p>
-                  <div class="artist-feature__bio">
+                  <div class="artist-feature__bio" data-read-more>
                     <p>
                       BIGru i Paja Kratak predstavljaju jedan od
                       najautentičnijih hip-hop dvojaca nove generacije iz
@@ -545,6 +545,13 @@
                       donose sirovu energiju beogradskog undergrounda — bez
                       kompromisa, baš onako kako pravi hip-hop treba da zvuči.
                     </p>
+                    <button
+                      type="button"
+                      class="artist-feature__more"
+                      aria-expanded="false"
+                    >
+                      Pročitaj više
+                    </button>
                   </div>
                   <div class="artist-feature__albums">
                     <div class="artist-feature__album-list">
@@ -608,7 +615,7 @@
                     Milioni streamova, eksplozivni nastupi — balkanski trap koji
                     dominira regionalnim scenama.
                   </p>
-                  <div class="artist-feature__bio">
+                  <div class="artist-feature__bio" data-read-more>
                     <p>
                       Cunami Flo jedno je od najzvučnijih imena nove regionalne
                       trap i hip-hop scene. Prepoznatljiv po energičnom flowu,
@@ -635,6 +642,13 @@
                       garantuje jedan od vrhunaca festivalske večeri i iskustvo
                       koje publika dugo pamti.
                     </p>
+                    <button
+                      type="button"
+                      class="artist-feature__more"
+                      aria-expanded="false"
+                    >
+                      Pročitaj više
+                    </button>
                   </div>
                   <div class="artist-feature__albums">
                     <div class="artist-feature__album-list">
@@ -654,6 +668,71 @@
           <!-- /.lineup-day -->
         </div>
         <!-- /.container -->
+      </section>
+
+      <section
+        class="section chill"
+        id="chill-zone"
+        aria-labelledby="chill-title"
+        data-chill-section
+      >
+        <div class="container chill__layout">
+          <div class="chill__media">
+            <video
+              class="chill__video"
+              data-chill-video
+              playsinline
+              loop
+              preload="metadata"
+              poster="/radionice-poster.webp"
+            >
+              <source src="/radionice.mp4" type="video/mp4" />
+            </video>
+            <div class="chill__scrim" aria-hidden="true"></div>
+            <button
+              type="button"
+              class="chill__sound"
+              data-chill-unmute
+              hidden
+            >
+              <span class="chill__sound-dot" aria-hidden="true"></span>
+              Play
+            </button>
+          </div>
+
+          <div class="chill__copy">
+            <span class="section__eyebrow">Chill Zone</span>
+            <h2 class="section__title chill__title" id="chill-title">
+              VORTEX Chill Zone
+            </h2>
+            <p class="chill__lead">donosi mnogo više od muzike.</p>
+            <ul class="chill__activities">
+              <li class="chill__activity">
+                <span class="chill__activity-mark" aria-hidden="true"></span>
+                <div>
+                  <span class="chill__activity-kind">Dance</span>
+                  <span class="chill__activity-label">Dance Bootcamp</span>
+                </div>
+              </li>
+              <li class="chill__activity">
+                <span class="chill__activity-mark" aria-hidden="true"></span>
+                <div>
+                  <span class="chill__activity-kind">DJ</span>
+                  <span class="chill__activity-label">DJ Masterclass</span>
+                </div>
+              </li>
+              <li class="chill__activity">
+                <span class="chill__activity-mark" aria-hidden="true"></span>
+                <div>
+                  <span class="chill__activity-kind">Street Art</span>
+                  <span class="chill__activity-label"
+                    >Graffiti &amp; Street Art</span
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <!-- LOKACIJA -->
