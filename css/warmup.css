@@ -2,7 +2,8 @@
 
 .warmup {
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .warmup__aura {
@@ -266,33 +267,30 @@
 }
 
 /* Artists slide in from the sides (video stays put) */
-.warmup__cell--artist {
+.warmup__cell--artist.reveal {
   opacity: 0;
   transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.35s ease,
     box-shadow 0.45s ease;
 }
 
-.warmup__cell--hladni {
-  transform: translateX(2.75rem);
-  transition-delay: 80ms;
+.warmup__cell--hladni.reveal {
+  transform: translate3d(4.5rem, 0, 0);
 }
 
-.warmup__cell--mirko {
-  transform: translateX(-2.75rem);
-  transition-delay: 160ms;
+.warmup__cell--mirko.reveal {
+  transform: translate3d(-4.5rem, 0, 0);
 }
 
-.warmup__cell--zoka {
-  transform: translateX(2.75rem);
-  transition-delay: 240ms;
+.warmup__cell--zoka.reveal {
+  transform: translate3d(4.5rem, 0, 0);
 }
 
-.warmup__grid.is-visible .warmup__cell--artist {
+.warmup__cell--artist.reveal.is-visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .warmup__scrim {
@@ -417,13 +415,10 @@
 
   .warmup__cell:hover .warmup__media,
   .warmup__fact:hover,
-  .warmup__cell--artist,
-  .warmup__grid.is-visible .warmup__cell--artist {
-    transform: none;
-  }
-
-  .warmup__cell--artist {
+  .warmup__cell--artist.reveal,
+  .warmup__cell--artist.reveal.is-visible {
     opacity: 1;
+    transform: none;
     transition: none;
   }
 }
