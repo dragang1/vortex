@@ -11,6 +11,16 @@
   margin: 0 0 var(--space-sm);
 }
 
+.sponsors__layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  align-items: stretch;
+  width: min(100%, 56rem);
+  margin-top: 1.5rem;
+  padding-block: 1rem;
+}
+
 .sponsors__center {
   display: flex;
   justify-content: center;
@@ -61,11 +71,11 @@
 
 /* Premium sponsor card */
 .sponsor-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.85rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
+  gap: 0.85rem;
   padding: clamp(1.25rem, 3vw, 1.75rem);
   border-radius: var(--radius-card);
   background: var(--glass-bg-strong);
@@ -74,8 +84,28 @@
   border: 1px solid var(--glass-border);
   border-top: 3px solid var(--color-accent);
   box-shadow: var(--glass-shadow);
-  max-width: 34rem;
   width: 100%;
+  height: 100%;
+  min-height: 22rem;
+}
+
+.sponsor-card--main {
+  max-width: none;
+}
+
+.sponsor-card__meta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.sponsor-card--partner {
+  border-top-color: rgba(20, 184, 166, 0.55);
+}
+
+.sponsor-card--partner .sponsor-card__role {
+  color: var(--color-accent-hot);
 }
 
 .sponsor-card__role {
@@ -97,8 +127,9 @@
 .sponsor-card__desc {
   color: var(--color-text-muted);
   max-width: 32rem;
-  margin: 0.25rem auto 0.6rem auto;
+  margin: 0.25rem auto 0 auto;
   font-size: 0.92rem;
+  min-height: 3.25rem;
 }
 
 .sponsor-card__link {
@@ -108,13 +139,43 @@
 
 /* Emphasize logo inside card */
 .sponsor-card .sponsor-logo {
+  display: block;
+  width: 100%;
+  height: 9rem;
   max-height: 9rem;
   margin: 0 auto;
+  object-fit: contain;
+}
+
+.sponsor-logo--carlsberg {
+  height: 9rem;
+  max-height: 9rem;
 }
 
 @media (max-width: 768px) {
-  .sponsor-card { padding: 0.85rem; }
-  .sponsor-card .sponsor-logo { max-height: 8rem; }
+  .sponsors__layout {
+    grid-template-columns: 1fr;
+    max-width: 28rem;
+    margin-inline: auto;
+    padding-block: 0.75rem;
+  }
+
+  .sponsor-card {
+    padding: 0.85rem;
+    min-height: 0;
+  }
+
+  .sponsor-card .sponsor-logo,
+  .sponsor-logo--carlsberg {
+    height: 8rem;
+    max-height: 8rem;
+  }
+
+  .sponsor-card__desc {
+    min-height: 0;
+  }
+
+  .sponsors__center { padding-block: 0.75rem; }
 }
 
 /* Hover lift effect */
