@@ -8,7 +8,6 @@ import "../css/footer.css";
 import "../css/sponsors.css";
 import "../css/lineup.css";
 import "../css/countdown.css";
-import "../css/warmup.css";
 import "../css/chill.css";
 import "../css/enhance.css";
 
@@ -17,7 +16,6 @@ import { initNav } from "./js/nav.js";
 import { initReveal } from "./js/reveal.js";
 import { initInteractions } from "./js/interactions.js";
 import { initCountdown } from "./js/countdown.js";
-import { initWarmupVideo } from "./js/warmup.js";
 import { initChillVideo } from "./js/chill.js";
 import { initReadMore } from "./js/readmore.js";
 
@@ -26,7 +24,6 @@ initReveal();
 initLoad();
 initInteractions();
 initCountdown();
-initWarmupVideo();
 initChillVideo();
 initReadMore();
 

@@ -90,15 +90,37 @@
   border-radius: var(--radius-sm);
 }
 
-.nav__link--lineup::before {
+.nav__link--lineup {
+  color: var(--color-text);
+  letter-spacing: 0.18em;
+}
+
+.nav__link--lineup::after {
   content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: 0.45rem;
-  background: var(--color-neon);
-  box-shadow: 0 0 10px rgba(45, 212, 191, 0.7);
-  transform: rotate(45deg);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.35rem;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-neon) 0%,
+    rgba(45, 212, 191, 0.15) 100%
+  );
+  transform: scaleX(0.55);
+  transform-origin: left center;
+  transition: transform 0.28s ease;
+}
+
+.nav__link--lineup:hover::after,
+.nav__link--lineup.is-active::after,
+.nav__link--lineup:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav__link--lineup:hover,
+.nav__link--lineup.is-active {
+  color: var(--color-neon);
 }
 
 .nav__link--social {
