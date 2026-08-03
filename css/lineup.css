@@ -294,6 +294,13 @@
 
 .artist-feature__meta .artist-card__tag {
   margin-bottom: 0;
+  display: inline-block;
+  font-family: var(--font-urban);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-hot);
 }
 
 .artist-feature__date {
@@ -451,6 +458,172 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   color: rgba(18, 48, 43, 0.35);
+  text-transform: uppercase;
+}
+
+/* ── Support acts (before headliners) ── */
+.artist-support {
+  margin-top: clamp(0.5rem, 2vw, 1rem);
+  margin-bottom: clamp(0.25rem, 1.5vw, 0.75rem);
+}
+
+.artist-support__label {
+  margin: 0 0 1rem;
+  font-family: var(--font-urban);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-hot);
+}
+
+.artist-support__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.85rem, 2.5vw, 1.35rem);
+  max-width: 42rem;
+}
+
+.artist-support__grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 56rem;
+  align-items: start;
+}
+
+.artist-support__aka {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.artist-support__tagline {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.artist-support__bio {
+  margin-top: 0.45rem;
+  text-align: left;
+}
+
+.artist-support__bio[data-read-more]:not(.is-expanded) > p:first-of-type {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.artist-support__bio[data-read-more]:not(.is-expanded) > p:not(:first-of-type) {
+  display: none;
+}
+
+.artist-support__bio p {
+  margin: 0 0 0.45rem;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.artist-support__bio em {
+  font-style: italic;
+  color: var(--color-text);
+}
+
+.artist-support__bio .artist-feature__more {
+  margin-top: 0;
+  font-size: 0.62rem;
+}
+
+.artist-support__card {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.artist-support__photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, #0e5c55 0%, #10403b 50%, #0c3b37 100%);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 14px 34px rgba(12, 59, 55, 0.14);
+}
+
+.artist-support__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.55s ease;
+}
+
+.artist-support__card:hover .artist-support__img {
+  transform: scale(1.04);
+}
+
+.artist-support__scrim {
+  position: absolute;
+  inset: auto 0 0;
+  height: 38%;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(9, 42, 39, 0.55) 100%
+  );
+}
+
+.artist-support__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: rgba(9, 42, 39, 0.72);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(251, 249, 243, 0.18);
+  color: #fbf9f3;
+  font-family: var(--font-urban);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.artist-support__info {
+  display: grid;
+  gap: 0.35rem;
+  padding-inline: 0.15rem;
+}
+
+.artist-support__info .artist-card__tag {
+  display: inline-block;
+  font-family: var(--font-urban);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-hot);
+}
+
+.artist-support__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-text);
 }
 
 /* ── RESPONSIVE ── */
@@ -467,6 +640,16 @@
   .artist-feature__photo {
     aspect-ratio: 16 / 10;
     max-height: 420px;
+  }
+
+  .artist-support__grid {
+    max-width: none;
+  }
+
+  .artist-support__grid--three {
+    grid-template-columns: 1fr;
+    max-width: 24rem;
+    margin-inline: auto;
   }
 
   .lineup-mystery {
@@ -492,6 +675,26 @@
   .artist-feature__photo {
     aspect-ratio: 1 / 1;
     max-height: none;
+  }
+
+  .artist-support__grid {
+    gap: 0.75rem;
+  }
+
+  .artist-support__grid--three {
+    grid-template-columns: 1fr;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .artist-support__name {
+    font-size: 1.05rem;
+  }
+
+  .artist-support__badge {
+    top: 0.55rem;
+    left: 0.55rem;
+    font-size: 0.52rem;
   }
 
   .lineup-mystery__grid {
