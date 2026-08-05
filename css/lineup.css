@@ -490,6 +490,26 @@
   align-items: start;
 }
 
+.artist-support__grid--five,
+.artist-support__grid--pair {
+  --as-gap: clamp(0.85rem, 2.5vw, 1.35rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+  gap: var(--as-gap);
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.artist-support__grid--five > *,
+.artist-support__grid--pair > * {
+  flex: 0 1 calc((100% - 2 * var(--as-gap)) / 3);
+  width: calc((100% - 2 * var(--as-gap)) / 3);
+  max-width: calc((100% - 2 * var(--as-gap)) / 3);
+  min-width: 0;
+}
+
 .artist-support__aka {
   margin: 0;
   font-size: 0.82rem;
@@ -652,6 +672,19 @@
     margin-inline: auto;
   }
 
+  .artist-support__grid--five,
+  .artist-support__grid--pair {
+    max-width: 56rem;
+    margin-inline: auto;
+  }
+
+  .artist-support__grid--five > *,
+  .artist-support__grid--pair > * {
+    flex: 0 1 calc((100% - var(--as-gap)) / 2);
+    width: calc((100% - var(--as-gap)) / 2);
+    max-width: calc((100% - var(--as-gap)) / 2);
+  }
+
   .lineup-mystery {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
@@ -685,6 +718,19 @@
     grid-template-columns: 1fr;
     max-width: 22rem;
     margin-inline: auto;
+  }
+
+  .artist-support__grid--five,
+  .artist-support__grid--pair {
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .artist-support__grid--five > *,
+  .artist-support__grid--pair > * {
+    flex: 0 1 100%;
+    width: 100%;
+    max-width: 22rem;
   }
 
   .artist-support__name {
