@@ -86,7 +86,7 @@
           { "@type": "Person", "name": "Hladni" },
           { "@type": "Person", "name": "Stefan Janjanin" },
           { "@type": "Person", "name": "Zokson" },
-          { "@type": "Person", "name": "Mirko Cikić" },
+          { "@type": "Person", "name": "Mirko Čikić" },
           { "@type": "Person", "name": "Mladen Milak" },
           { "@type": "Person", "name": "Zoran Popović" },
           { "@type": "MusicGroup", "name": "BIGru i Paja Kratak" },
@@ -107,79 +107,17 @@
     <load src="partials/nav.html" />
 
     <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__bg" aria-hidden="true"></div>
-        <div
-          class="hero__grid-lines"
-          aria-hidden="true"
-          data-parallax="0.16"
-        ></div>
-        <div class="hero__noise" aria-hidden="true" data-parallax="0.08"></div>
-        <div class="hero__slash" aria-hidden="true"></div>
-
-        <div class="hero__inner">
-          <div class="hero__content">
-            <div
-              class="hero__badge reveal-load reveal-load--fade-up"
-              data-reveal-delay="0"
-            >
-              <span class="hero__badge-dot" aria-hidden="true"></span>
-              Savski kej, Gradiška &middot; 13. i 14. avgust 2026.
-            </div>
-
-            <h1 class="hero__title" id="hero-title">
-              <span
-                class="hero__title-line reveal-load reveal-load--clip"
-                data-reveal-delay="80"
-              >
-                <span class="reveal-load__inner">VORTEX</span>
-              </span>
-              <span
-                class="hero__title-line hero__title-line--year reveal-load reveal-load--clip"
-                data-reveal-delay="160"
-              >
-                <span class="reveal-load__inner">2026</span>
-              </span>
-            </h1>
-
-            <p
-              class="hero__lead reveal-load reveal-load--fade-up"
-              data-reveal-delay="150"
-            >
-              Urban Music Festival
-            </p>
-
-            <div
-              class="hero__meta reveal-load reveal-stagger reveal-load--fade-up"
-              data-reveal-delay="280"
-            >
-              <div class="hero__meta-item reveal-stagger__item">
-                <strong>13. i 14. AVGUST</strong>
-                Savski kej, Gradiška
-              </div>
-              <div class="hero__meta-item reveal-stagger__item">
-                <strong>14. AVGUST</strong>
-                BIGru, Paja Kratak, Cunami Flo i Mladen Tomić
-              </div>
-              <div class="hero__meta-item reveal-stagger__item">
-                <strong>CHILL ZONE</strong>
-                Dance, DJ, Street Art &amp; Kokteli
-              </div>
-            </div>
-
-            <div
-              class="hero__actions reveal-load reveal-load--fade-up"
-              data-reveal-delay="380"
-            >
-              <a href="#lineup" class="btn btn--primary">Pogledaj lineup</a>
-              <a href="#tickets" class="btn btn--secondary">Free entry</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero__scroll-hint" aria-hidden="true">
-          <span>Scroll</span>
-        </div>
+      <section class="hero" aria-label="Vortex Urban Music Festival 2026">
+        <h1 class="sr-only">Vortex Urban Music Festival 2026</h1>
+        <img
+          class="hero__img"
+          src="/hero-optimised.webp"
+          alt="Vortex Urban Music Festival 2026 — bilbord"
+          width="1920"
+          height="1080"
+          decoding="async"
+          fetchpriority="high"
+        />
       </section>
 
       <section class="countdown" aria-label="Odbrojavanje do festivala">
@@ -518,7 +456,7 @@
                   <div class="artist-support__photo">
                     <img
                       src="/cikic.webp"
-                      alt="Mirko Cikić"
+                      alt="Mirko Čikić"
                       class="artist-support__img"
                       width="900"
                       height="1125"
@@ -533,7 +471,35 @@
                   </div>
                   <div class="artist-support__info">
                     <span class="artist-card__tag">DJ</span>
-                    <h3 class="artist-support__name">Mirko Cikić</h3>
+                    <h3 class="artist-support__name">Mirko Čikić</h3>
+                    <div class="artist-support__bio" data-read-more>
+                      <p>
+                        Na Chill Zone stiže Mirko Čikić, DJ čiji su setovi
+                        spoj pažljivo biranog techna, minimala i house zvuka.
+                      </p>
+                      <p>
+                        Kao jedan od ljudi koji stoje iza
+                        <em>NKSZ Collective</em>-a, Mirko je godinama aktivan
+                        na domaćoj elektronskoj sceni. Bio je dio organizacije
+                        <em>Green Eco Fest</em> na Bardači, festivala koji je
+                        spojio elektronsku muziku i promociju zaštite prirode,
+                        ostavljajući značajan trag na regionalnoj underground
+                        sceni.
+                      </p>
+                      <p>
+                        Pored toga, imao je veliki broj gaža u Sloveniji,
+                        Hrvatskoj i Srbiji, a gradiška publika ga pamti po
+                        nastupima u Caffe Macao, ali i mnogim lokalima
+                        banjalučke regije.
+                      </p>
+                      <button
+                        type="button"
+                        class="artist-feature__more"
+                        aria-expanded="false"
+                      >
+                        Pročitaj više
+                      </button>
+                    </div>
                   </div>
                 </article>
               </div>

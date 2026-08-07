@@ -172,9 +172,6 @@ input {
 
 /* Display font (Space Grotesk) needs an explicit heavy weight */
 .section__title,
-.hero__title,
-.hero__meta-item strong,
-.hero__stat-value,
 .destination-card__title,
 .coming-soon__title,
 .artist-feature__name,
