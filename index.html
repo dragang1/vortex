@@ -41,8 +41,16 @@
     <link
       rel="preload"
       as="image"
+      href="/hero-mobile.webp"
+      type="image/webp"
+      media="(max-width: 768px)"
+    />
+    <link
+      rel="preload"
+      as="image"
       href="/hero-optimised.webp"
       type="image/webp"
+      media="(min-width: 769px)"
     />
     <link
       rel="stylesheet"
@@ -109,15 +117,22 @@
     <main id="main">
       <section class="hero" aria-label="Vortex Urban Music Festival 2026">
         <h1 class="sr-only">Vortex Urban Music Festival 2026</h1>
-        <img
-          class="hero__img"
-          src="/hero-optimised.webp"
-          alt="Vortex Urban Music Festival 2026 — bilbord"
-          width="1920"
-          height="1080"
-          decoding="async"
-          fetchpriority="high"
-        />
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcset="/hero-mobile.webp"
+            type="image/webp"
+          />
+          <img
+            class="hero__img"
+            src="/hero-optimised.webp"
+            alt="Vortex Urban Music Festival 2026 — bilbord"
+            width="1920"
+            height="1080"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
       </section>
 
       <section class="countdown" aria-label="Odbrojavanje do festivala">
